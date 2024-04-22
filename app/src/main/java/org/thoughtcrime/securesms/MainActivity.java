@@ -77,12 +77,14 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     //cái android.R.id.content là của system hệ thống, nó không phải của res layout, thường dùng để lấy view  root view của activity
     final View content = findViewById(android.R.id.content);
 
+    //ViewTreeObserver is an object that monitors changes to the layout of a view hierarchy
     content.getViewTreeObserver().addOnPreDrawListener(
+        //lắn nghe event khi content chuẫn bị đươc vẽ ra trên màn hình
         new ViewTreeObserver.OnPreDrawListener() {
           @Override
           public boolean onPreDraw() {
             // Use pre draw listener to delay drawing frames till conversation list is ready
-            if (onFirstRender) {
+            if (onFirstRender == true) {
               content.getViewTreeObserver().removeOnPreDrawListener(this);
               return true;
             } else {
