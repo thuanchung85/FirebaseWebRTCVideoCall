@@ -1,5 +1,6 @@
 package org.signal.core.util.concurrent
 
+import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -14,10 +15,15 @@ class LifecycleDisposable : DefaultLifecycleObserver {
   val disposables: CompositeDisposable = CompositeDisposable()
 
   fun bindTo(lifecycleOwner: LifecycleOwner): LifecycleDisposable {
+    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() ${lifecycleOwner.javaClass.simpleName}")
+    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() $this")
+
+
     return bindTo(lifecycleOwner.lifecycle)
   }
 
   fun bindTo(lifecycle: Lifecycle): LifecycleDisposable {
+    //cái này là code dùng để gắn addObserver vào cho lifecycle, và trả ra object của chính class LifecycleDisposable
     lifecycle.addObserver(this)
     return this
   }

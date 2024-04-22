@@ -12,6 +12,7 @@ import android.view.ViewTreeObserver;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -38,6 +39,12 @@ import org.thoughtcrime.securesms.util.DynamicTheme;
 import org.thoughtcrime.securesms.util.SplashScreenUtil;
 import org.thoughtcrime.securesms.util.WindowUtil;
 
+/*
+In Android, starting from version androidx.appcompat:appcompat:1.2.0,
+AppCompatActivity automatically implements the LifecycleOwner interface,
+making every MainActivity (or any activity that extends AppCompatActivity) a LifecycleOwner by default.
+*/
+
 public class MainActivity extends PassphraseRequiredActivity implements VoiceNoteMediaControllerOwner {
 
   //==================Properties===================//
@@ -50,6 +57,8 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   private ConversationListTabsViewModel conversationListTabsViewModel;
   private VitalsViewModel               vitalsViewModel;
 
+
+  //đây chính là 1 Lifecycle Observer chuyên dùng để nhận event onCreate,onStart...onDestroy của object Lifecycle Owner
   private final LifecycleDisposable lifecycleDisposable = new LifecycleDisposable();
 
   private boolean onFirstRender = false;
@@ -62,8 +71,12 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     AppStartup.getInstance().onCriticalRenderEventStart();
     super.onCreate(savedInstanceState, ready);
 
+    // lấy file layout ra "main_activity" để áp dụng cho this MainActivity
     setContentView(R.layout.main_activity);
+
+    //cái android.R.id.content là của system hệ thống, nó không phải của res layout, thường dùng để lấy view  root view của activity
     final View content = findViewById(android.R.id.content);
+
     content.getViewTreeObserver().addOnPreDrawListener(
         new ViewTreeObserver.OnPreDrawListener() {
           @Override
@@ -76,10 +89,14 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
               return false;
             }
           }
-        });
+        }
+
+    );
 
     //chính vì MainActivity có implement interface "VoiceNoteMediaControllerOwner" nên nó có quyền gọi lifecycleDisposable.bindTo
     //lifecycleDisposable là class tạo ra để quản lý vòng đời của các Activity
+    //main activity mặc định là 1 LifecycleOwner, cho nên no có thể truyền vào lifecycleDisposable.bindto
+    //lý do ta cần cái này là vì ai cần 1 cơ chế để các class khác thấy được vòng đời sống của main activity này
     lifecycleDisposable.bindTo(this);
 
     mediaController = new VoiceNoteMediaController(this, true);
@@ -101,6 +118,8 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
             .getVitalsState()
             .subscribe(this::presentVitalsState)
     );
+
+
   }
 
   @Override
@@ -135,6 +154,7 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     super.onStop();
     SplashScreenUtil.setSplashScreenThemeIfNecessary(this, SignalStore.settings().getTheme());
   }
+
 
 
   //=========APP METHODS===========//
@@ -261,4 +281,6 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   public @NonNull VoiceNoteMediaController getVoiceNoteMediaController() {
     return mediaController;
   }
+
+
 }
