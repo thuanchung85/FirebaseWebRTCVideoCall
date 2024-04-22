@@ -40,6 +40,7 @@ import org.thoughtcrime.securesms.util.WindowUtil;
 
 public class MainActivity extends PassphraseRequiredActivity implements VoiceNoteMediaControllerOwner {
 
+  //==================Properties===================//
   public static final int RESULT_CONFIG_CHANGED = Activity.RESULT_FIRST_USER + 901;
 
   private final DynamicTheme  dynamicTheme = new DynamicNoActionBarTheme();
@@ -52,19 +53,12 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   private final LifecycleDisposable lifecycleDisposable = new LifecycleDisposable();
 
   private boolean onFirstRender = false;
+  //==================Properties===================//
 
-  public static @NonNull Intent clearTop(@NonNull Context context) {
-    Intent intent = new Intent(context, MainActivity.class);
-
-    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
-                    Intent.FLAG_ACTIVITY_NEW_TASK |
-                    Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
-    return intent;
-  }
-
+  //=========APP METHODS===========//
   @Override
-  protected void onCreate(Bundle savedInstanceState, boolean ready) {
+  protected void onCreate(Bundle savedInstanceState, boolean ready)
+  {
     AppStartup.getInstance().onCriticalRenderEventStart();
     super.onCreate(savedInstanceState, ready);
 
@@ -84,6 +78,8 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
           }
         });
 
+    //chính vì MainActivity có implement interface "VoiceNoteMediaControllerOwner" nên nó có quyền gọi lifecycleDisposable.bindTo
+    //lifecycleDisposable là class tạo ra để quản lý vòng đời của các Activity
     lifecycleDisposable.bindTo(this);
 
     mediaController = new VoiceNoteMediaController(this, true);
@@ -106,6 +102,53 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
             .subscribe(this::presentVitalsState)
     );
   }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    dynamicTheme.onResume(this);
+    if (SignalStore.misc().isOldDeviceTransferLocked()) {
+      new MaterialAlertDialogBuilder(this)
+          .setTitle(R.string.OldDeviceTransferLockedDialog__complete_registration_on_your_new_device)
+          .setMessage(R.string.OldDeviceTransferLockedDialog__your_signal_account_has_been_transferred_to_your_new_device)
+          .setPositiveButton(R.string.OldDeviceTransferLockedDialog__done, (d, w) -> OldDeviceExitActivity.exit(this))
+          .setNegativeButton(R.string.OldDeviceTransferLockedDialog__cancel_and_activate_this_device, (d, w) -> {
+            SignalStore.misc().setOldDeviceTransferLocked(false);
+            DeviceTransferBlockingInterceptor.getInstance().unblockNetwork();
+          })
+          .setCancelable(false)
+          .show();
+    }
+
+    if (SignalStore.misc().getShouldShowLinkedDevicesReminder()) {
+      SignalStore.misc().setShouldShowLinkedDevicesReminder(false);
+      RelinkDevicesReminderBottomSheetFragment.show(getSupportFragmentManager());
+    }
+
+    updateTabVisibility();
+
+    vitalsViewModel.checkSlowNotificationHeuristics();
+  }
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    SplashScreenUtil.setSplashScreenThemeIfNecessary(this, SignalStore.settings().getTheme());
+  }
+
+
+  //=========APP METHODS===========//
+
+  public static @NonNull Intent clearTop(@NonNull Context context) {
+    Intent intent = new Intent(context, MainActivity.class);
+
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+    return intent;
+  }
+
 
   @SuppressLint("NewApi")
   private void presentVitalsState(VitalsViewModel.State state) {
@@ -142,38 +185,6 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     dynamicTheme.onCreate(this);
   }
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    dynamicTheme.onResume(this);
-    if (SignalStore.misc().isOldDeviceTransferLocked()) {
-      new MaterialAlertDialogBuilder(this)
-          .setTitle(R.string.OldDeviceTransferLockedDialog__complete_registration_on_your_new_device)
-          .setMessage(R.string.OldDeviceTransferLockedDialog__your_signal_account_has_been_transferred_to_your_new_device)
-          .setPositiveButton(R.string.OldDeviceTransferLockedDialog__done, (d, w) -> OldDeviceExitActivity.exit(this))
-          .setNegativeButton(R.string.OldDeviceTransferLockedDialog__cancel_and_activate_this_device, (d, w) -> {
-            SignalStore.misc().setOldDeviceTransferLocked(false);
-            DeviceTransferBlockingInterceptor.getInstance().unblockNetwork();
-          })
-          .setCancelable(false)
-          .show();
-    }
-
-    if (SignalStore.misc().getShouldShowLinkedDevicesReminder()) {
-      SignalStore.misc().setShouldShowLinkedDevicesReminder(false);
-      RelinkDevicesReminderBottomSheetFragment.show(getSupportFragmentManager());
-    }
-
-    updateTabVisibility();
-
-    vitalsViewModel.checkSlowNotificationHeuristics();
-  }
-
-  @Override
-  protected void onStop() {
-    super.onStop();
-    SplashScreenUtil.setSplashScreenThemeIfNecessary(this, SignalStore.settings().getTheme());
-  }
 
   @Override
   public void onBackPressed() {

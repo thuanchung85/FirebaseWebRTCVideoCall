@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 /**
  * A lifecycle-aware [Disposable] that, after being bound to a lifecycle, will automatically dispose all contained disposables at the proper time.
  */
+//class này có tính năng là quản lý vòng đời các Activity khác
 class LifecycleDisposable : DefaultLifecycleObserver {
   val disposables: CompositeDisposable = CompositeDisposable()
 
