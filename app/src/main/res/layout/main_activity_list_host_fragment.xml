@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <View
+        android:backgroundTint="@color/green_50"
         android:id="@+id/toolbar_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/signal_m3_toolbar_height"
@@ -76,7 +77,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="@string/app_name"
+                android:text="ari-talk"
+                android:textSize="14sp"
+                android:textColor="@color/red_700"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/Signal.Text.TitleLarge"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -85,10 +88,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatImageView
+
                 android:id="@+id/conversation_list_notification_profile_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?selectableItemBackgroundBorderless"
+                android:backgroundTint="@color/green_50"
                 android:paddingHorizontal="3dp"
                 android:paddingVertical="11dp"
                 android:visibility="gone"
@@ -118,9 +123,10 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?actionBarItemBackground"
+
                 android:contentDescription="@string/conversation_list_search_description"
                 android:padding="12dp"
-                android:tint="@color/signal_icon_tint_primary"
+                android:tint="@color/red_100"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -137,9 +143,11 @@
         android:inflatedId="@+id/toolbar_basic"
         android:layout="@layout/conversation_list_archive_toolbar"
         android:minHeight="@dimen/signal_m3_toolbar_height"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/red_700"/>
 
     <ViewStub
+        android:backgroundTint="@color/red_700"
         android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/signal_m3_toolbar_height"
@@ -147,6 +155,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
+        android:background="@color/green_50"
         android:id="@+id/toolbar_barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,6 +163,7 @@
         app:constraint_referenced_ids="toolbar,toolbar_basic,toolbar_background" />
 
     <androidx.fragment.app.FragmentContainerView
+        android:background="@color/cardview_dark_background"
         android:id="@+id/fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

@@ -55,12 +55,19 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
     private val TAG = Log.tag(MainActivityListHostFragment::class.java)
   }
 
+  //chổ này là biến nắm giữa conversation
   private val conversationListTabsViewModel: ConversationListTabsViewModel by viewModels(ownerProducer = { requireActivity() })
+
+  //biến lắn nghe life cycle event
   private val disposables: LifecycleDisposable = LifecycleDisposable()
 
   private lateinit var _toolbarBackground: View
   private lateinit var _toolbar: Toolbar
+
+  //This class can be used to lazily inflate ViewStubs and work with the inflated views without directly interacting with the ViewStub itself.
+  //khởi tạo ViewStub dạng Toolbar
   private lateinit var _basicToolbar: Stub<Toolbar>
+
   private lateinit var notificationProfileStatus: ImageView
   private lateinit var proxyStatus: ImageView
   private lateinit var _searchToolbar: Stub<Material3SearchToolbar>
@@ -79,15 +86,26 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     android.util.Log.d("CHUNG", "MainActivityListHostFragment onCreate")
+    //gắn biến life cycle event
     disposables.bindTo(viewLifecycleOwner, "MainActivityListHostFragment -> onViewCreated")
 
     _toolbarBackground = view.findViewById(R.id.toolbar_background)
     _toolbar = view.findViewById(R.id.toolbar)
+
+    //A ViewStub is an invisible, zero-sized View that can be used to lazily inflate layout resources at runtime.
     _basicToolbar = Stub(view.findViewById(R.id.toolbar_basic_stub))
+
     notificationProfileStatus = view.findViewById(R.id.conversation_list_notification_profile_status)
     proxyStatus = view.findViewById(R.id.conversation_list_proxy_status)
+
+    //icon cái kinh lup search
     _searchAction = view.findViewById(R.id.search_action)
+
+    //có những ui lúc cần hiện ra, lúc thì không cần show, viewStub có thể ap dụng được cho case này
+    //A ViewStub is an invisible, zero-sized View that can be used to lazily inflate layout resources at runtime.
+    //khi ta bấm but kinh lup search thi nó kéo ra cái view text nhập, và không cần thì kéo vô
     _searchToolbar = Stub(view.findViewById(R.id.search_toolbar))
+
     _unreadPaymentsDot = view.findViewById(R.id.unread_payments_indicator)
 
     notificationProfileStatus.setOnClickListener { handleNotificationProfile() }
@@ -108,6 +126,7 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
     }
   }
 
+  //đi tới conversationListFragment
   private fun goToStateFromConversationList(state: ConversationListTabsState, navController: NavController) {
     if (state.tab == ConversationListTab.CHATS) {
       return
@@ -144,6 +163,7 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
     }
   }
 
+  //đi tới callLogFragment
   private fun goToStateFromCalling(state: ConversationListTabsState, navController: NavController) {
     when (state.tab) {
       ConversationListTab.CALLS -> return
@@ -152,6 +172,7 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
     }
   }
 
+  //đi tới storiesLandingFragment
   private fun goToStateFromStories(state: ConversationListTabsState, navController: NavController) {
     when (state.tab) {
       ConversationListTab.STORIES -> return
@@ -240,13 +261,17 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
     return _basicToolbar
   }
 
+  //when user tap on search button "hinh kinh lup"
+  //có 3 chổ co khả năng gọi cho hàm này là ConversationListFragment, CallLogFragment, StoriesLandingFragment
   override fun onSearchOpened() {
+    android.util.Log.d("CHUNG", "MainActivityListHostFragment -> onSearchOpened")
     conversationListTabsViewModel.onSearchOpened()
     _searchToolbar.get().clearText()
     _searchToolbar.get().display(_searchAction.x + (_searchAction.width / 2.0f), _searchAction.y + (_searchAction.height / 2.0f))
   }
 
   override fun onSearchClosed() {
+    android.util.Log.d("CHUNG", "MainActivityListHostFragment -> onSearchClosed")
     conversationListTabsViewModel.onSearchClosed()
   }
 

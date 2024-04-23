@@ -809,6 +809,9 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
     requireCallback().getSearchAction().setOnClickListener(v -> {
       fadeOutButtonsAndMegaphone(250);
+
+      //gọi onSearchOpened cua callback
+      //gọi onSearchOpened() trên MainActivityListHostFragment
       requireCallback().onSearchOpened();
 
       requireCallback().getSearchToolbar().get().setListener(new Material3SearchToolbar.Listener() {

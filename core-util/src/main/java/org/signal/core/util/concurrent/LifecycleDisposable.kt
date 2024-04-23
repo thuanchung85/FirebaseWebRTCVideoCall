@@ -15,7 +15,7 @@ class LifecycleDisposable : DefaultLifecycleObserver {
   val disposables: CompositeDisposable = CompositeDisposable()
 
   fun bindTo(lifecycleOwner: LifecycleOwner, lydo:String): LifecycleDisposable {
-    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() ${lydo}")
+    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() ${lifecycleOwner}  ${lydo}")
 
 
 

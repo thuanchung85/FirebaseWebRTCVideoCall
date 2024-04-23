@@ -6,6 +6,7 @@
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
     <View
+        android:backgroundTint="@color/red_700"
         android:id="@+id/toolbar_background"
         android:layout_width="0dp"
         android:layout_height="0dp"

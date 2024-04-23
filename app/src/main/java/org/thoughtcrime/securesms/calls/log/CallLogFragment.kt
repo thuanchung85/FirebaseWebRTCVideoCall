@@ -269,6 +269,8 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
   private fun initializeSearchAction() {
     val searchBinder = requireListener<SearchBinder>()
     searchBinder.getSearchAction().setOnClickListener {
+
+      //gọi onSearchOpened() trên MainActivityListHostFragment
       searchBinder.onSearchOpened()
       searchBinder.getSearchToolbar().get().setSearchInputHint(R.string.SearchToolbar_search)
 

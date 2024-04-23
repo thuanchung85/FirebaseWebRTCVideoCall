@@ -52,6 +52,8 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   public static final int RESULT_CONFIG_CHANGED = Activity.RESULT_FIRST_USER + 901;
 
   private final DynamicTheme  dynamicTheme = new DynamicNoActionBarTheme();
+
+  //khởi tạo 1 object MainNavigator, và gắn chính main activity vào để navigator lắn nghe state của main activity
   private final MainNavigator navigator    = new MainNavigator(this);
 
 

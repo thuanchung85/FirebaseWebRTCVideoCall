@@ -7,32 +7,41 @@
     android:background="@color/signal_colorSurface2"
     android:minHeight="80dp">
 
-    <View
-        android:id="@+id/chats_tab_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/calls_tab_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--container-->
 
     <View
+       android:background="@color/red_700"
         android:id="@+id/calls_tab_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/stories_tab_container"
-        app:layout_constraintStart_toEndOf="@id/chats_tab_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/chats_tab_container"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:background="@color/green_100"
+        android:id="@+id/chats_tab_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/stories_tab_container"
+        app:layout_constraintStart_toEndOf="@id/calls_tab_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <View
+        android:background="@color/blue_400"
         android:id="@+id/stories_tab_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/calls_tab_container"
+        app:layout_constraintStart_toEndOf="@id/chats_tab_container"
         app:layout_constraintTop_toTopOf="parent" />
+    <!--container-->
+
 
     <View
         android:id="@+id/chats_tab_touch_point"

@@ -12,12 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        tools:context=".MainActivity" />
+        tools:context=".MainActivity"
+        android:backgroundTint="@color/red_700"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/conversation_list_tabs"
         android:name="org.thoughtcrime.securesms.stories.tabs.ConversationListTabsFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/green_50"/>
 
 </LinearLayout>
