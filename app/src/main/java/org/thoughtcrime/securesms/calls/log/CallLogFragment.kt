@@ -118,6 +118,7 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    android.util.Log.w("CHUNG", "CallLogFragment -> onViewCreated")
     requireActivity().addMenuProvider(menuProvider, viewLifecycleOwner)
     initializeSharedElementTransition()
 

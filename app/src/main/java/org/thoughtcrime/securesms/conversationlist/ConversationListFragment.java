@@ -198,7 +198,7 @@ import kotlin.Unit;
 
 import static android.app.Activity.RESULT_OK;
 
-
+//this is CHATS fragment
 public class ConversationListFragment extends MainFragment implements ActionMode.Callback,
                                                                       ConversationListAdapter.OnConversationClickListener,
                                                                       MegaphoneActionController, ClearFilterViewHolder.OnClearFilterClickListener
@@ -261,6 +261,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
   @Override
   public void onCreate(Bundle icicle) {
+    android.util.Log.d("CHUNG", "ConversationListFragment -> onCreate");
     super.onCreate(icicle);
     setHasOptionsMenu(true);
     startupStopwatch = new Stopwatch("startup");
@@ -277,7 +278,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
     lifecycleDisposable = new LifecycleDisposable();
 
-    android.util.Log.d("CHUNG", "ConversationListFragment onViewCreated");
+    android.util.Log.w("CHUNG", "ConversationListFragment onViewCreated");
     lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ConversationListFragment -> onViewCreated");
 
     coordinator             = view.findViewById(R.id.coordinator);

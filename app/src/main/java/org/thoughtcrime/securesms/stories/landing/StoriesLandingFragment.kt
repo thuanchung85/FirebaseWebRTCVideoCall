@@ -146,7 +146,7 @@ class StoriesLandingFragment : DSLSettingsFragment(layoutId = R.layout.stories_l
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    Log.d("CHUNG", "StoriesLandingFragment -> onViewCreated")
+    Log.w("CHUNG", "StoriesLandingFragment -> onViewCreated")
     reminderView = ViewUtil.findStubById(view, R.id.reminder)
     updateReminders()
   }
