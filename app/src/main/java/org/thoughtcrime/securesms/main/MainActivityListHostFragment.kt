@@ -49,6 +49,7 @@ import org.thoughtcrime.securesms.util.views.Stub
 import org.thoughtcrime.securesms.util.visible
 import org.whispersystems.signalservice.api.websocket.WebSocketConnectionState
 
+//this class will contain for   ConversationListFragment, CallLogFragment, StoriesLandingFragment
 class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_fragment), ConversationListFragment.Callback, Material3OnScrollHelperBinder, CallLogFragment.Callback {
 
   companion object {
@@ -117,6 +118,8 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
 
     disposables += conversationListTabsViewModel.state.subscribeBy { state ->
       val controller: NavController = requireView().findViewById<View>(R.id.fragment_container).findNavController()
+      //when user tap menu that will change controller.currentDestination?.id
+      //khi controller.currentDestination?.id change thi load fragment tương ứng
       when (controller.currentDestination?.id) {
         R.id.conversationListFragment -> goToStateFromConversationList(state, controller)
         R.id.conversationListArchiveFragment -> Unit

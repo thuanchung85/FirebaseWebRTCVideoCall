@@ -1,5 +1,6 @@
 package org.thoughtcrime.securesms.stories.tabs
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -48,16 +49,19 @@ class ConversationListTabsViewModel(repository: ConversationListTabRepository) :
   }
 
   fun onChatsSelected() {
+    Log.d("CHUNG", "ConversationListTabsViewModel -> onChatsSelected: ")
     internalTabClickEvents.onNext(ConversationListTab.CHATS)
     performStoreUpdate { it.copy(tab = ConversationListTab.CHATS) }
   }
 
   fun onCallsSelected() {
+    Log.d("CHUNG", "ConversationListTabsViewModel -> onCallsSelected: ")
     internalTabClickEvents.onNext(ConversationListTab.CALLS)
     performStoreUpdate { it.copy(tab = ConversationListTab.CALLS) }
   }
 
   fun onStoriesSelected() {
+    Log.d("CHUNG", "ConversationListTabsViewModel -> onStoriesSelected: ")
     internalTabClickEvents.onNext(ConversationListTab.STORIES)
     performStoreUpdate { it.copy(tab = ConversationListTab.STORIES) }
   }

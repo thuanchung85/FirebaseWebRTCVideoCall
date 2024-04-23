@@ -10,7 +10,7 @@
     <!--container-->
 
     <View
-       android:background="@color/red_700"
+       android:background="@color/red_500"
         android:id="@+id/calls_tab_container"
         android:layout_width="0dp"
         android:layout_height="0dp"

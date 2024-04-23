@@ -26,6 +26,8 @@ import org.thoughtcrime.securesms.keyvalue.SignalStore
 import org.thoughtcrime.securesms.stories.Stories
 import org.thoughtcrime.securesms.util.visible
 
+
+//this is bottom menu bar contain of chats, calls, stories buttons
 /**
  * Displays the "Chats" and "Stories" tab to a user.
  */
@@ -65,15 +67,19 @@ class ConversationListTabsFragment : Fragment(R.layout.conversation_list_tabs) {
       LottieProperty.COLOR
     ) { iconTint }
 
+    //this is place when user tap on 3 buttons bottom menu
     view.findViewById<View>(R.id.chats_tab_touch_point).setOnClickListener {
+      Log.d("CHUNG", "ConversationListTabsFragment CHAT TAP")
       viewModel.onChatsSelected()
     }
 
     view.findViewById<View>(R.id.calls_tab_touch_point).setOnClickListener {
+      Log.d("CHUNG", "ConversationListTabsFragment CALL TAP")
       viewModel.onCallsSelected()
     }
 
     view.findViewById<View>(R.id.stories_tab_touch_point).setOnClickListener {
+      Log.d("CHUNG", "ConversationListTabsFragment STORIES TAP")
       viewModel.onStoriesSelected()
     }
 
