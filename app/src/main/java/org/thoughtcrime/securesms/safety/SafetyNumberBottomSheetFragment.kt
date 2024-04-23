@@ -81,7 +81,7 @@ class SafetyNumberBottomSheetFragment : DSLSettingsBottomSheetFragment(layoutId 
 
     SplashImage.register(adapter)
     SafetyNumberRecipientRowItem.register(adapter)
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "SafetyNumberBottomSheetFragment -> bindAdapter")
 
     lifecycleDisposable += viewModel.state.subscribe { state ->
       reviewConnections.visible = state.hasLargeNumberOfUntrustedRecipients

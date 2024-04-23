@@ -50,7 +50,7 @@ class PromptBatterySaverDialogFragment : FixedRoundedCornerBottomSheetDialogFrag
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "PromptBatterySaverDialogFragment -> onViewCreated")
 
     binding.continueButton.setOnClickListener {
       PowerManagerCompat.requestIgnoreBatteryOptimizations(requireContext())

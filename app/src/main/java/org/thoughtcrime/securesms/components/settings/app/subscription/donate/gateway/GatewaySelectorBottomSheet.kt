@@ -46,7 +46,7 @@ class GatewaySelectorBottomSheet : DSLSettingsBottomSheetFragment() {
     PayPalButton.register(adapter)
     IndeterminateLoadingCircle.register(adapter)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "GatewaySelectorBottomSheet -> bindAdapter")
 
     lifecycleDisposable += viewModel.state.subscribe { state ->
       adapter.submitList(getConfiguration(state).toMappingModelList())

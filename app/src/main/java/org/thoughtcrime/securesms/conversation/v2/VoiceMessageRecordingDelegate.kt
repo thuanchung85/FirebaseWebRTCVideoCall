@@ -36,7 +36,7 @@ class VoiceMessageRecordingDelegate(
   }
 
   private val disposables = LifecycleDisposable().apply {
-    bindTo(fragment.viewLifecycleOwner)
+    bindTo(fragment.viewLifecycleOwner, "VoiceMessageRecordingDelegate -> val disposables")
   }
 
   private val voiceRecorderWakeLock = VoiceRecorderWakeLock(fragment.requireActivity())

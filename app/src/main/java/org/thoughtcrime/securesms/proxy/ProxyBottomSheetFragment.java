@@ -71,7 +71,7 @@ public final class ProxyBottomSheetFragment extends BottomSheetDialogFragment {
     this.cancelButton   = view.findViewById(R.id.proxy_sheet_cancel);
 
     lifecycleDisposable = new LifecycleDisposable();
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ProxyBottomSheetFragment -> onViewCreated");
 
     String host = getArguments().getString(ARG_PROXY_LINK);
     proxyText.setText(host);

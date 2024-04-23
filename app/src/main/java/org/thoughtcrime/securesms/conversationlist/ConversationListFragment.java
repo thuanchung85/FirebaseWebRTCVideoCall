@@ -276,7 +276,9 @@ public class ConversationListFragment extends MainFragment implements ActionMode
     getViewLifecycleOwner().getLifecycle().addObserver(new TerminalDonationDelegate(getParentFragmentManager(), getViewLifecycleOwner()));
 
     lifecycleDisposable = new LifecycleDisposable();
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+
+    android.util.Log.d("CHUNG", "ConversationListFragment onViewCreated");
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ConversationListFragment -> onViewCreated");
 
     coordinator             = view.findViewById(R.id.coordinator);
     list                    = view.findViewById(R.id.list);
@@ -424,7 +426,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
     conversationListTabsViewModel = new ViewModelProvider(requireActivity()).get(ConversationListTabsViewModel.class);
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ConversationListFragment -> handleOnBackPressed");
     lifecycleDisposable.add(conversationListTabsViewModel.getTabClickEvents().filter(tab -> tab == ConversationListTab.CHATS)
                                                          .subscribe(unused -> {
                                                            LinearLayoutManager layoutManager            = (LinearLayoutManager) list.getLayoutManager();

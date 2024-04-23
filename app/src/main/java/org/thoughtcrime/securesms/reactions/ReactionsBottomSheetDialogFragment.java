@@ -95,7 +95,7 @@ public final class ReactionsBottomSheetDialogFragment extends BottomSheetDialogF
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     recipientPagerView = view.findViewById(R.id.reactions_bottom_view_recipient_pager);
 
-    disposables.bindTo(getViewLifecycleOwner());
+    disposables.bindTo(getViewLifecycleOwner(), "ReactionsBottomSheetDialogFragment -> onViewCreated");
 
     setUpRecipientsRecyclerView();
     setUpTabMediator(view, savedInstanceState);

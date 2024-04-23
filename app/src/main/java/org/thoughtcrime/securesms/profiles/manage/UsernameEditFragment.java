@@ -88,7 +88,7 @@ public class UsernameEditFragment extends LoggingFragment {
     binding.usernameTextWrapper.setErrorIconDrawable(null);
 
     lifecycleDisposable = new LifecycleDisposable();
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "UsernameEditFragment -> onViewCreated");
 
     viewModel = new ViewModelProvider(this, new UsernameEditViewModel.Factory(args.getMode())).get(UsernameEditViewModel.class);
 

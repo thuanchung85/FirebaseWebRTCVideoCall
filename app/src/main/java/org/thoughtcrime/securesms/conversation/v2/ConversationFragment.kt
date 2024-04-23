@@ -551,7 +551,7 @@ class ConversationFragment :
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     binding.toolbar.isBackInvokedCallbackEnabled = false
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "ConversationFragment -> onViewCreated")
     FullscreenHelper(requireActivity()).showSystemUI()
 
     markReadHelper = MarkReadHelper(ConversationId.forConversation(args.threadId), requireContext(), viewLifecycleOwner)

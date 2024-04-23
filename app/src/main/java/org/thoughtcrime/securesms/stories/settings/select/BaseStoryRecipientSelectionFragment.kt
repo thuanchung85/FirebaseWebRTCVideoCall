@@ -53,7 +53,7 @@ abstract class BaseStoryRecipientSelectionFragment : Fragment(R.layout.stories_b
 
     toolbar.setTitle(toolbarTitleId)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "BaseStoryRecipientSelectionFragment -> onViewCreated")
 
     actionButton.setText(actionButtonLabel)
 

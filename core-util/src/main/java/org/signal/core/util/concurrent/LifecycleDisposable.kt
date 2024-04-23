@@ -14,9 +14,9 @@ import io.reactivex.rxjava3.disposables.Disposable
 class LifecycleDisposable : DefaultLifecycleObserver {
   val disposables: CompositeDisposable = CompositeDisposable()
 
-  fun bindTo(lifecycleOwner: LifecycleOwner): LifecycleDisposable {
-    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() ${lifecycleOwner.javaClass.simpleName}")
-    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() $this")
+  fun bindTo(lifecycleOwner: LifecycleOwner, lydo:String): LifecycleDisposable {
+    Log.d("CHUNG", "CHUNG LifecycleDisposable -> bindTo() ${lydo}")
+
 
 
     return bindTo(lifecycleOwner.lifecycle)

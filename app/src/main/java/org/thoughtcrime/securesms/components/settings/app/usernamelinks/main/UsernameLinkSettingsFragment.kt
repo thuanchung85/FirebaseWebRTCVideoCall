@@ -154,7 +154,7 @@ class UsernameLinkSettingsFragment : ComposeFragment() {
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "UsernameLinkSettingsFragment -> onViewCreated")
   }
 
   override fun onResume() {

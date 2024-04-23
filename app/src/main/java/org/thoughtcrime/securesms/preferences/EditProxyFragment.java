@@ -62,7 +62,7 @@ public class EditProxyFragment extends Fragment {
     this.shareButton = view.findViewById(R.id.edit_proxy_share);
 
     lifecycleDisposable = new LifecycleDisposable();
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "EditProxyFragment -> onViewCreated");
 
     proxyText.addTextChangedListener(new SimpleTextWatcher() {
       @Override

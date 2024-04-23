@@ -217,7 +217,7 @@ class TextStoryPostTextEntryFragment : KeyboardEntryDialogFragment(
   }
 
   private fun initializeViewModel() {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "TextStoryPostTextEntryFragment -> initializeViewModel" )
 
     lifecycleDisposable += viewModel.typeface.subscribeBy { typeface ->
       input.typeface = typeface

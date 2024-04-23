@@ -28,7 +28,8 @@ class TerminalDonationDelegate(
 ) : DefaultLifecycleObserver {
 
   private val lifecycleDisposable = LifecycleDisposable().apply {
-    bindTo(lifecycleOwner)
+    android.util.Log.d("CHUNG", "TerminalDonationDelegate apply")
+    bindTo(lifecycleOwner, "TerminalDonationDelegate -> val lifecycleDisposable")
   }
 
   private val badgeRepository = TerminalDonationRepository()

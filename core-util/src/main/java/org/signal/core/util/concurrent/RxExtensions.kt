@@ -36,13 +36,13 @@ fun <T : Any> Single<T>.safeBlockingGet(): T {
 
 fun <T : Any> Flowable<T>.observe(viewLifecycleOwner: LifecycleOwner, onNext: (T) -> Unit) {
   val lifecycleDisposable = LifecycleDisposable()
-  lifecycleDisposable.bindTo(viewLifecycleOwner)
+  lifecycleDisposable.bindTo(viewLifecycleOwner,"fun <T : Any> Flowable<T>.observe")
   lifecycleDisposable += subscribeBy(onNext = onNext)
 }
 
 fun Completable.observe(viewLifecycleOwner: LifecycleOwner, onComplete: () -> Unit) {
   val lifecycleDisposable = LifecycleDisposable()
-  lifecycleDisposable.bindTo(viewLifecycleOwner)
+  lifecycleDisposable.bindTo(viewLifecycleOwner, "fun Completable.observe")
   lifecycleDisposable += subscribeBy(onComplete = onComplete)
 }
 

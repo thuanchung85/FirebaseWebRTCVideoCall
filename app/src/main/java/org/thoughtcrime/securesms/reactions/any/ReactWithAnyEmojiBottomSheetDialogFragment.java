@@ -175,7 +175,7 @@ public final class ReactWithAnyEmojiBottomSheetDialogFragment extends FixedRound
 
   @Override
   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    disposables.bindTo(getViewLifecycleOwner());
+    disposables.bindTo(getViewLifecycleOwner(), "ReactWithAnyEmojiBottomSheetDialogFragment -> onViewCreated");
 
     emojiPageView = view.findViewById(R.id.react_with_any_emoji_page_view);
     emojiPageView.initialize(this, this, true);

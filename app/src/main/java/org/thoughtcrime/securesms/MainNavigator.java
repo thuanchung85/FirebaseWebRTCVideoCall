@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,7 +27,8 @@ public class MainNavigator {
     this.activity            = activity;
     this.lifecycleDisposable = new LifecycleDisposable();
 
-    lifecycleDisposable.bindTo(activity);
+    Log.d("CHUNG", "MainNavigator constructor");
+    lifecycleDisposable.bindTo(activity, "MainNavigator -> constructor");
   }
 
   public static MainNavigator get(@NonNull Activity activity) {

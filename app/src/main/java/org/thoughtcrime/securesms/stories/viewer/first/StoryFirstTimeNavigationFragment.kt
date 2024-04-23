@@ -49,7 +49,7 @@ class StoryFirstTimeNavigationFragment : DialogFragment(R.layout.story_viewer_fi
     view.callback = this
     viewModel.setIsDisplayingFirstTimeNavigation(true)
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "StoryFirstTimeNavigationFragment -> onViewCreated")
     disposables += viewModel.state.observeOn(AndroidSchedulers.mainThread()).subscribe { state ->
       when (state.crossfadeSource) {
         is StoryViewerState.CrossfadeSource.ImageUri -> {

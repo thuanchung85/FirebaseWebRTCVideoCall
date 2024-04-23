@@ -77,7 +77,7 @@ class InternalConversationTestFragment : Fragment(R.layout.conversation_test_fra
 
     var startTime = 0L
     var firstRender = true
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "InternalConversationTestFragment -> onViewCreated ")
     adapter.setPagingController(viewModel.controller)
     lifecycleDisposable += viewModel.data.observeOn(AndroidSchedulers.mainThread()).subscribeBy {
       if (firstRender) {

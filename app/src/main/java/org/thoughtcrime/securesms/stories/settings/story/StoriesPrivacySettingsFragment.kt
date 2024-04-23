@@ -52,7 +52,7 @@ class StoriesPrivacySettingsFragment :
   }
 
   override fun bindAdapters(adapter: ConcatAdapter) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner,"StoriesPrivacySettingsFragment -> bindAdapters")
 
     val titleId = StoriesPrivacySettingsFragmentArgs.fromBundle(requireArguments()).titleId
     setTitle(titleId)

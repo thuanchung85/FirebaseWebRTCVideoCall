@@ -74,7 +74,7 @@ class DonationCheckoutDelegate(
   }
 
   override fun onCreate(owner: LifecycleOwner) {
-    disposables.bindTo(fragment.viewLifecycleOwner)
+    disposables.bindTo(fragment.viewLifecycleOwner, "DonationCheckoutDelegate -> onCreate")
     donationPaymentComponent = fragment.requireListener()
     registerGooglePayCallback()
 
@@ -243,7 +243,7 @@ class DonationCheckoutDelegate(
       val disposables = LifecycleDisposable()
       fragment.viewLifecycleOwner.lifecycle.addObserver(this)
 
-      disposables.bindTo(fragment.viewLifecycleOwner)
+      disposables.bindTo(fragment.viewLifecycleOwner, "ErrorHandler -> attach")
       disposables += registerErrorSource(errorSource)
       additionalSources.forEach { source ->
         disposables += registerErrorSource(source)

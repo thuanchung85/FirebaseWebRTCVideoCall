@@ -69,7 +69,7 @@ class CallLinkDetailsFragment : ComposeFragment(), CallLinkDetailsCallback {
   private val lifecycleDisposable = LifecycleDisposable()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "CallLinkDetailsFragment -> onViewCreated" )
     parentFragmentManager.setFragmentResultListener(EditCallLinkNameDialogFragment.RESULT_KEY, viewLifecycleOwner) { resultKey, bundle ->
       if (bundle.containsKey(resultKey)) {
         setName(bundle.getString(resultKey)!!)

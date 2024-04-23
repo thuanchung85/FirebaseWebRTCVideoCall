@@ -124,7 +124,7 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
     viewLifecycleOwner.lifecycle.addObserver(conversationUpdateTick)
 
     val callLogAdapter = CallLogAdapter(this)
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "CallLogFragment -> onViewCreated")
     callLogAdapter.setPagingController(viewModel.controller)
     callLogAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
       override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {

@@ -40,7 +40,7 @@ class EditStoryNameFragment : Fragment(R.layout.stories_edit_story_name_fragment
   private lateinit var storyNameWrapper: TextInputLayout
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "EditStoryNameFragment -> onViewCreated")
 
     val toolbar: Toolbar = view.findViewById(R.id.toolbar)
     toolbar.navigationIcon?.colorFilter = SimpleColorFilter(ContextCompat.getColor(requireContext(), R.color.signal_icon_tint_primary))

@@ -62,7 +62,7 @@ class GroupStorySettingsFragment : DSLSettingsFragment(menuId = R.menu.story_gro
   override fun bindAdapter(adapter: MappingAdapter) {
     PrivateStoryItem.register(adapter)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "GroupStorySettingsFragment -> bindAdapter")
     viewModel.state.observe(viewLifecycleOwner) { state ->
       if (state.removed) {
         findNavController().popBackStack()

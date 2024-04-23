@@ -200,7 +200,7 @@ class StoriesLandingFragment : DSLSettingsFragment(layoutId = R.layout.stories_l
 
     requireListener<Material3OnScrollHelperBinder>().bindScrollHelper(recyclerView!!)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner,"StoriesLandingFragment -> bindAdapter")
     emptyNotice = requireView().findViewById(R.id.empty_notice)
     cameraFab = requireView().findViewById(R.id.camera_fab)
     val sharedElementTarget: View = requireView().findViewById(R.id.camera_fab_shared_element_target)

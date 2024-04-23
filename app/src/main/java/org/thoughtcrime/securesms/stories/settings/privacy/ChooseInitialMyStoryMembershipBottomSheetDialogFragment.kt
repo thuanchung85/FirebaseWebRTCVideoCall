@@ -75,7 +75,7 @@ class ChooseInitialMyStoryMembershipBottomSheetDialogFragment :
       isEnabled = false
     }
 
-    lifecycleDisposable = LifecycleDisposable().apply { bindTo(viewLifecycleOwner) }
+    lifecycleDisposable = LifecycleDisposable().apply { bindTo(viewLifecycleOwner, "ChooseInitialMyStoryMembershipBottomSheetDialogFragment -> onViewCreated") }
 
     lifecycleDisposable += viewModel.state
       .subscribe { state ->

@@ -109,7 +109,7 @@ class StoryViewsAndRepliesDialogFragment : FixedRoundedCornerBottomSheetDialogFr
       }
     }.attach()
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryViewsAndRepliesDialogFragment -> onViewCreated")
 
     view.viewTreeObserver.addOnGlobalLayoutListener {
       val parentHeight = requireCoordinatorLayout().height

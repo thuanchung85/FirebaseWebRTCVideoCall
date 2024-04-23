@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -72,6 +73,7 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   @Override
   protected void onCreate(Bundle savedInstanceState, boolean ready)
   {
+    Log.d("CHUNG", "MAIN ACTIVITY onCreate");
     AppStartup.getInstance().onCriticalRenderEventStart();
     super.onCreate(savedInstanceState, ready);
 
@@ -106,22 +108,30 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     //lifecycleDisposable là class tạo ra để quản lý vòng đời của các Activity
     //main activity mặc định là 1 LifecycleOwner, cho nên no có thể truyền vào lifecycleDisposable.bindto
     //lý do ta cần cái này là vì ai cần 1 cơ chế để các class khác thấy được vòng đời sống của main activity này
-    lifecycleDisposable.bindTo(this);
+    lifecycleDisposable.bindTo(this, "MainActivity -> onCreate");
 
     //khởi tạo mediaController cho main activity
     mediaController = new VoiceNoteMediaController(this, true);
 
-    ConversationListTabRepository         repository = new ConversationListTabRepository();
-    ConversationListTabsViewModel.Factory factory    = new ConversationListTabsViewModel.Factory(repository);
-
+    //???????
     handleDeeplinkIntent(getIntent());
 
+    //??????
     CachedInflater.from(this).clear();
 
+
+    //khởi tạo 1 cái kho "repository" chuyên dùng để lo vấn đề  ConversationList
+    ConversationListTabRepository repository = new ConversationListTabRepository();
+    //bọc cái repository vào 1 object gọi là factory, factory này là 1 ViewModel có dạng ConversationListTabViewModel
+    ConversationListTabsViewModel.Factory factory    = new ConversationListTabsViewModel.Factory(repository);
+    //factory được tạo ra để pass vào ViewModelProvider để tạo ra 1 Custom Initialization ViewModel mới
     conversationListTabsViewModel = new ViewModelProvider(this, factory).get(ConversationListTabsViewModel.class);
     updateTabVisibility();
 
+
+    //vistals có nghĩa là sức sống, cái vitalsViewModel dùng để theo dỏi tình trang app state  NONE,PROMPT_BATTERY_SAVER_DIALOG,PROMPT_DEBUGLOGS_FOR_NOTIFICATIONS,PROMPT_DEBUGLOGS_FOR_CRASH
     vitalsViewModel = new ViewModelProvider(this).get(VitalsViewModel.class);
+
 
     lifecycleDisposable.add(
         vitalsViewModel
@@ -134,6 +144,7 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
 
   @Override
   protected void onResume() {
+    Log.d("CHUNG", "MAIN ACTIVITY onResume");
     super.onResume();
     dynamicTheme.onResume(this);
     if (SignalStore.misc().isOldDeviceTransferLocked()) {

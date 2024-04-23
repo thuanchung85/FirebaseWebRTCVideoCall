@@ -106,7 +106,7 @@ class MediaCaptureFragment : Fragment(R.layout.fragment_container), CameraFragme
       captureChildFragment.presentHud(state.selectedMedia.size)
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "MediaCaptureFragment -> onViewCreated")
     lifecycleDisposable += sharedViewModel.hudCommands.subscribe { command ->
       if (command == HudCommand.GoToText) {
         findNavController().safeNavigate(R.id.action_mediaCaptureFragment_to_textStoryPostCreationFragment)

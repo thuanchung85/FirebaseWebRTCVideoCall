@@ -97,7 +97,7 @@ class ViewReceivedGiftBottomSheet : DSLSettingsBottomSheetFragment() {
       .setCancelable(false)
       .create()
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "ViewReceivedGiftBottomSheet -> bindAdapter")
     lifecycleDisposable += DonationError
       .getErrorsForSource(DonationErrorSource.GIFT_REDEMPTION)
       .observeOn(AndroidSchedulers.mainThread())

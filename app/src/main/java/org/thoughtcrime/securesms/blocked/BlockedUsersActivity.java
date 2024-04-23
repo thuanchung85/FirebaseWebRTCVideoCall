@@ -44,7 +44,7 @@ public class BlockedUsersActivity extends PassphraseRequiredActivity implements 
   protected void onCreate(Bundle savedInstanceState, boolean ready) {
     super.onCreate(savedInstanceState, ready);
 
-    lifecycleDisposable.bindTo(this);
+    lifecycleDisposable.bindTo(this, "BlockedUsersActivity -> onCreate");
     dynamicTheme.onCreate(this);
 
     setContentView(R.layout.blocked_users_activity);

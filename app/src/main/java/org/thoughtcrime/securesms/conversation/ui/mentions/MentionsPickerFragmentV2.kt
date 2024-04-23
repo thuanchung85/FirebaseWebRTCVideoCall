@@ -46,7 +46,7 @@ class MentionsPickerFragmentV2 : LoggingFragment() {
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "MentionsPickerFragmentV2 -> onViewCreated")
 
     initializeList()
     viewModel

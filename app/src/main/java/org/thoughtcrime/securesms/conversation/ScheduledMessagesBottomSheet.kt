@@ -78,7 +78,7 @@ class ScheduledMessagesBottomSheet : FixedRoundedCornerBottomSheetDialogFragment
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     val view = inflater.inflate(R.layout.scheduled_messages_bottom_sheet, container, false)
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "ScheduledMessagesBottomSheet -> onCreateView")
     return view
   }
 

@@ -275,7 +275,7 @@ public final class ContactSelectionListFragment extends LoggingFragment {
     contactChipAdapter   = new MappingAdapter();
     lifecycleDisposable  = new LifecycleDisposable();
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ContactSelectionListFragment -> onCreateView");
     SelectedContacts.register(contactChipAdapter, this::onChipCloseIconClicked);
     chipRecycler.setAdapter(contactChipAdapter);
 

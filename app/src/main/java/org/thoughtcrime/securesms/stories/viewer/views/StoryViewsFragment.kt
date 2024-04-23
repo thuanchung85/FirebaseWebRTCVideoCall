@@ -44,7 +44,7 @@ class StoryViewsFragment :
   override fun bindAdapter(adapter: MappingAdapter) {
     StoryViewItem.register(adapter)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryViewsFragment -> bindAdapter")
 
     val emptyNotice: View = requireView().findViewById(R.id.empty_notice)
     val disabledNotice: View = requireView().findViewById(R.id.disabled_notice)

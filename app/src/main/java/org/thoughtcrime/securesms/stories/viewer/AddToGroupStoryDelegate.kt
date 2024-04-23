@@ -39,7 +39,7 @@ class AddToGroupStoryDelegate(
   }
 
   private val lifecycleDisposable = LifecycleDisposable().apply {
-    bindTo(fragment.viewLifecycleOwner)
+    bindTo(fragment.viewLifecycleOwner, "AddToGroupStoryDelegate -> val lifecycleDisposable")
   }
 
   private val addToStoryLauncher: ActivityResultLauncher<Intent> = fragment.registerForActivityResult(

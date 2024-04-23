@@ -58,7 +58,7 @@ class CreateStoryWithViewersFragment : DSLSettingsFragment(
       viewModel.setLabel(it)
     }
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "CreateStoryWithViewersFragment -> bindAdapter")
     adapter.submitList(getConfiguration().toMappingModelList())
     disposables += viewModel.state.subscribe { state ->
 

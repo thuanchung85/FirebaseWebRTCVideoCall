@@ -86,7 +86,7 @@ class StoryViewerFragment :
 
     storyPager.offscreenPageLimit = 1
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryViewerFragment -> onViewCreated")
     lifecycleDisposable += viewModel.state.observeOn(AndroidSchedulers.mainThread()).subscribe { state ->
       if (state.noPosts) {
         ActivityCompat.finishAfterTransition(requireActivity())

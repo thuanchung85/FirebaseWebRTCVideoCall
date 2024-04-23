@@ -29,7 +29,7 @@ class MyStorySettingsFragment : DSLSettingsFragment(
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     lifecycleDisposable = LifecycleDisposable()
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "MyStorySettingsFragment -> onViewCreated")
     super.onViewCreated(view, savedInstanceState)
   }
 

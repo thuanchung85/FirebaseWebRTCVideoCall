@@ -113,7 +113,7 @@ class ShareActivity : PassphraseRequiredActivity(), MultiselectForwardFragment.C
       toolbar.visible = false
     }
 
-    lifecycleDisposable.bindTo(this)
+    lifecycleDisposable.bindTo(this,"ShareActivity -> onCreate")
     lifecycleDisposable += viewModel.events.subscribe { shareEvent ->
       when (shareEvent) {
         is ShareEvent.OpenConversation -> openConversation(shareEvent)

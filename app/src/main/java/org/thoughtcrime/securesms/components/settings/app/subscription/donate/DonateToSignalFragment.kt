@@ -132,7 +132,7 @@ class DonateToSignalFragment :
     CurrencySelection.register(adapter)
     DonationPillToggle.register(adapter)
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "DonateToSignalFragment -> bindAdapter")
     disposables += viewModel.actions.subscribe { action ->
       when (action) {
         is DonateToSignalAction.DisplayCurrencySelectionDialog -> {

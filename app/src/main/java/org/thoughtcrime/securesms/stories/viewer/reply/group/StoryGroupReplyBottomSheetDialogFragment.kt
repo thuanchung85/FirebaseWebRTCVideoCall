@@ -60,7 +60,7 @@ class StoryGroupReplyBottomSheetDialogFragment : FixedRoundedCornerBottomSheetDi
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryGroupReplyBottomSheetDialogFragment -> onViewCreated")
     if (savedInstanceState == null) {
       childFragmentManager.beginTransaction()
         .replace(R.id.fragment_container, StoryGroupReplyFragment.create(storyId, groupRecipientId, isFromNotification, groupReplyStartPosition))

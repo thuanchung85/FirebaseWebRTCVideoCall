@@ -50,7 +50,7 @@ public final class TransferOrRestoreFragment extends LoggingFragment {
 
     binding.transferOrRestoreFragmentTransferDescription.setText(SpanUtil.boldSubstring(description, toBold));
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "TransferOrRestoreFragment -> onViewCreated");
     lifecycleDisposable.add(viewModel.getState().subscribe(this::updateSelection));
   }
 

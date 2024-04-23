@@ -55,7 +55,7 @@ public final class PaymentsTransferQrScanFragment extends LoggingFragment {
 
     scannerView.start(getViewLifecycleOwner(), CameraXModelBlocklist.isBlocklisted());
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "PaymentsTransferQrScanFragment -> onViewCreated");
 
     Disposable qrDisposable = scannerView
         .getQrData()

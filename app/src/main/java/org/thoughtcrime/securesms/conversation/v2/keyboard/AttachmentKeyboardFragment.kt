@@ -50,7 +50,7 @@ class AttachmentKeyboardFragment : LoggingFragment(R.layout.attachment_keyboard_
   @Suppress("ReplaceGetOrSet")
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "AttachmentKeyboardFragment -> onViewCreated")
 
     attachmentKeyboardView = view.findViewById(R.id.attachment_keyboard)
     attachmentKeyboardView.apply {

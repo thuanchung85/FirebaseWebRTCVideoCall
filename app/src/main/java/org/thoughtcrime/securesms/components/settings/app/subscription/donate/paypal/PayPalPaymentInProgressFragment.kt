@@ -71,7 +71,7 @@ class PayPalPaymentInProgressFragment : DialogFragment(R.layout.donation_in_prog
       }
     }
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "PayPalPaymentInProgressFragment -> onViewCreated")
     disposables += viewModel.state.subscribeBy { stage ->
       presentUiState(stage)
     }

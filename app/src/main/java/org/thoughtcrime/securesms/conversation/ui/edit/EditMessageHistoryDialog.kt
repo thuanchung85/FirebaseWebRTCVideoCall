@@ -78,7 +78,7 @@ class EditMessageHistoryDialog : FixedRoundedCornerBottomSheetDialogFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "EditMessageHistoryDialog -> onViewCreated")
 
     val colorizer = Colorizer()
 

@@ -70,7 +70,7 @@ class DebugLogsPromptDialogFragment : FixedRoundedCornerBottomSheetDialogFragmen
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "DebugLogsPromptDialogFragment -> onViewCreated")
 
     val purpose = Purpose.deserialize(requireArguments().getInt(KEY_PURPOSE))
 

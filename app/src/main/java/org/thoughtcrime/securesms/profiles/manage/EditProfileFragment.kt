@@ -66,7 +66,7 @@ class EditProfileFragment : LoggingFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     disposables = LifecycleDisposable()
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "EditProfileFragment -> onViewCreated")
 
     UsernameEditFragment.ResultContract().registerForResult(parentFragmentManager, viewLifecycleOwner) {
       Snackbar.make(view, R.string.ManageProfileFragment__username_created, Snackbar.LENGTH_SHORT).show()

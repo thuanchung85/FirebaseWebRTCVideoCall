@@ -62,7 +62,7 @@ public class BlockedUsersFragment extends Fragment {
       }
     });
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "BlockedUsersFragment -> onViewCreated");
     viewModel = new ViewModelProvider(requireActivity()).get(BlockedUsersViewModel.class);
     lifecycleDisposable.add(
         viewModel.getRecipients().subscribe(list -> {

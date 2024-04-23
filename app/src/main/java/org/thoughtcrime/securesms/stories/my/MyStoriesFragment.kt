@@ -51,7 +51,7 @@ class MyStoriesFragment : DSLSettingsFragment(
     )
 
     val emptyNotice = requireView().findViewById<View>(R.id.empty_notice)
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "MyStoriesFragment -> bindAdapter")
     viewModel.state.observe(viewLifecycleOwner) {
       adapter.submitList(getConfiguration(it).toMappingModelList())
       emptyNotice.visible = it.distributionSets.isEmpty()

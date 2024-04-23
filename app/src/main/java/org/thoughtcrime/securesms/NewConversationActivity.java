@@ -88,12 +88,13 @@ public class NewConversationActivity extends ContactSelectionActivity
 
   @Override
   public void onCreate(Bundle bundle, boolean ready) {
+    Log.d("CHUNG", "NEW CONVERSATION ACTIVITY onCreate");
     super.onCreate(bundle, ready);
     assert getSupportActionBar() != null;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     getSupportActionBar().setTitle(R.string.NewConversationActivity__new_message);
 
-    disposables.bindTo(this);
+    disposables.bindTo(this, "NewConversationActivity -> onCreate");
 
     ContactsManagementRepository        repository = new ContactsManagementRepository(this);
     ContactsManagementViewModel.Factory factory    = new ContactsManagementViewModel.Factory(repository);

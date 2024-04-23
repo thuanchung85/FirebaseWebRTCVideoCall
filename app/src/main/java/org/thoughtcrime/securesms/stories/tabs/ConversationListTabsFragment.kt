@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintSet
@@ -40,7 +41,9 @@ class ConversationListTabsFragment : Fragment(R.layout.conversation_list_tabs) {
   private val smallConstraintSet: ConstraintSet = ConstraintSet()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    disposables.bindTo(viewLifecycleOwner)
+
+    Log.d("CHUNG", "ConversationListTabsFragment onViewCreated")
+    disposables.bindTo(viewLifecycleOwner, "ConversationListTabsFragment -> onViewCreated")
 
     val iconTint = ContextCompat.getColor(requireContext(), R.color.signal_colorOnSecondaryContainer)
 

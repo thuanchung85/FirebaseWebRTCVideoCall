@@ -67,7 +67,7 @@ class CreateCallLinkBottomSheetDialogFragment : ComposeBottomSheetDialogFragment
   override val peekHeightPercentage: Float = 1f
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "CreateCallLinkBottomSheetDialogFragment -> onViewCreated")
     parentFragmentManager.setFragmentResultListener(EditCallLinkNameDialogFragment.RESULT_KEY, viewLifecycleOwner) { resultKey, bundle ->
       if (bundle.containsKey(resultKey)) {
         setCallName(bundle.getString(resultKey)!!)

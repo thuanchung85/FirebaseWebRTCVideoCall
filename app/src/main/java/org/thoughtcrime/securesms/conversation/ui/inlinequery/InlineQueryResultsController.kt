@@ -30,7 +30,7 @@ class InlineQueryResultsController(
   private var isLandscape: Boolean = false
 
   init {
-    lifecycleDisposable.bindTo(lifecycleOwner)
+    lifecycleDisposable.bindTo(lifecycleOwner, "InlineQueryResultsController -> init")
 
     lifecycleDisposable += viewModel.results
       .observeOn(AndroidSchedulers.mainThread())

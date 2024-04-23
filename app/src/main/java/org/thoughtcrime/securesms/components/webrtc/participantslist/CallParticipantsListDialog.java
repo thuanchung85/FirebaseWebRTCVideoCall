@@ -77,7 +77,7 @@ public class CallParticipantsListDialog extends BottomSheetDialogFragment {
 
     initializeList();
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "CallParticipantsListDialog -> onViewCreated");
     lifecycleDisposable.add(viewModel.getCallParticipantsState().subscribe(this::updateList));
   }
 

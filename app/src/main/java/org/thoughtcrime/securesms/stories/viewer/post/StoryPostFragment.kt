@@ -51,7 +51,7 @@ class StoryPostFragment : Fragment(R.layout.stories_post_fragment) {
 
     initializeVideoPlayer()
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "StoryPostFragment -> onViewCreated")
 
     disposables += pageViewModel.postContent
       .filter { it.isPresent }

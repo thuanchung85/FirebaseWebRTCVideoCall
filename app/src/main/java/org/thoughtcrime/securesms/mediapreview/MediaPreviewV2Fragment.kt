@@ -100,7 +100,7 @@ class MediaPreviewV2Fragment : LoggingFragment(R.layout.fragment_media_preview_v
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "MediaPreviewV2Fragment -> onCreateView")
     return super.onCreateView(inflater, container, savedInstanceState)
   }
 

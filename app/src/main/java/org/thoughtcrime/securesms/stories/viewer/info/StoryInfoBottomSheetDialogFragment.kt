@@ -42,7 +42,7 @@ class StoryInfoBottomSheetDialogFragment : DSLSettingsBottomSheetFragment() {
     StoryInfoHeader.register(adapter)
     StoryInfoRecipientRow.register(adapter)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryInfoBottomSheetDialogFragment -> bindAdapter")
     lifecycleDisposable += viewModel.state.subscribe { state ->
       if (state.isLoaded) {
         adapter.submitList(getConfiguration(state).toMappingModelList())

@@ -65,7 +65,7 @@ class MediaSelectionGalleryFragment : Fragment(R.layout.fragment_container), Med
       )
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "MediaSelectionGalleryFragment -> onViewCreated")
     lifecycleDisposable += sharedViewModel.mediaErrors
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(this::handleError)

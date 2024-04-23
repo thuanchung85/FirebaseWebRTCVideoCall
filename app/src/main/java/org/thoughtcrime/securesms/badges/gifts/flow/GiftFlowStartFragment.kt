@@ -48,7 +48,7 @@ class GiftFlowStartFragment : DSLSettingsFragment(
       findNavController().safeNavigate(R.id.action_giftFlowStartFragment_to_giftFlowRecipientSelectionFragment)
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "GiftFlowStartFragment -> bindAdapter" )
     lifecycleDisposable += viewModel.state.observeOn(AndroidSchedulers.mainThread()).subscribe { state ->
       next.isEnabled = state.stage == GiftFlowState.Stage.READY
 

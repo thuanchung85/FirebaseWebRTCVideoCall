@@ -131,7 +131,7 @@ class CreditCardFragment : Fragment(R.layout.credit_card_fragment) {
       findNavController().popBackStack()
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "CreditCardFragment -> onViewCreated")
     lifecycleDisposable += viewModel.state.subscribe {
       // TODO [alex] -- type
       presentContinue(it)

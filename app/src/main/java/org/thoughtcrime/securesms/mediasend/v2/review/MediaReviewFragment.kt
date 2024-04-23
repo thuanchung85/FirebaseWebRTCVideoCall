@@ -123,7 +123,7 @@ class MediaReviewFragment : Fragment(R.layout.v2_media_review_fragment), Schedul
 
     SystemWindowInsetsSetter.attach(view, viewLifecycleOwner)
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "MediaReviewFragment -> onViewCreated")
 
     callback = requireListener()
 
@@ -346,7 +346,7 @@ class MediaReviewFragment : Fragment(R.layout.v2_media_review_fragment), Schedul
       computeViewStateAndAnimate(state)
     }
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "MediaReviewFragment -> onViewCreated")
     disposables += sharedViewModel.mediaErrors
       .observeOn(AndroidSchedulers.mainThread())
       .subscribe(this::handleMediaValidatorFilterError)

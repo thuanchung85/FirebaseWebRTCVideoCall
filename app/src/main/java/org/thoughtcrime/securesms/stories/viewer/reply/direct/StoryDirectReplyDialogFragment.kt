@@ -68,7 +68,7 @@ class StoryDirectReplyDialogFragment :
   override val withDim: Boolean = true
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner,"StoryDirectReplyDialogFragment -> onViewCreated")
 
     composer = view.findViewById(R.id.input)
     composer.callback = object : StoryReplyComposer.Callback {

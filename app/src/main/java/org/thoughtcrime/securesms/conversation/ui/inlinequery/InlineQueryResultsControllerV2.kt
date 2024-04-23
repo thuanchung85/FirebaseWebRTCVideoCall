@@ -39,7 +39,7 @@ class InlineQueryResultsControllerV2(
   private var isLandscape: Boolean = false
 
   init {
-    lifecycleDisposable.bindTo(parentFragment.viewLifecycleOwner)
+    lifecycleDisposable.bindTo(parentFragment.viewLifecycleOwner, "InlineQueryResultsControllerV2 -> init")
 
     viewModel
       .results

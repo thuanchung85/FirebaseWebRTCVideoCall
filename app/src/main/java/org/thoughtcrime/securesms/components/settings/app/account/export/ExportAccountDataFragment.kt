@@ -59,7 +59,7 @@ class ExportAccountDataFragment : ComposeFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "ExportAccountDataFragment -> onViewCreated")
   }
 
   private fun exportReport() {

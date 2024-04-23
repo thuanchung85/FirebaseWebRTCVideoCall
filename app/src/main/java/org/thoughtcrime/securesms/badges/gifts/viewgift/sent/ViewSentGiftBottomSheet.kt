@@ -56,7 +56,7 @@ class ViewSentGiftBottomSheet : DSLSettingsBottomSheetFragment() {
   override fun bindAdapter(adapter: DSLSettingsAdapter) {
     BadgeDisplay112.register(adapter)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "ViewSentGiftBottomSheet -> bindAdapter")
     lifecycleDisposable += viewModel.state.observeOn(AndroidSchedulers.mainThread()).subscribe { state ->
       adapter.submitList(getConfiguration(state).toMappingModelList())
     }

@@ -24,7 +24,7 @@ class CallLogContextMenu(
   private val callbacks: Callbacks
 ) {
 
-  private val lifecycleDisposable by lazy { LifecycleDisposable().bindTo(fragment.viewLifecycleOwner) }
+  private val lifecycleDisposable by lazy { LifecycleDisposable().bindTo(fragment.viewLifecycleOwner, "CallLogContextMenu -> val lifecycleDisposable") }
 
   fun show(recyclerView: RecyclerView, anchor: View, call: CallLogRow.Call) {
     recyclerView.suppressLayout(true)

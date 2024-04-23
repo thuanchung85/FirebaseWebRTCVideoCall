@@ -43,7 +43,7 @@ public final class ImageMediaPreviewFragment extends MediaPreviewFragment {
     viewModel           = new ViewModelProvider(requireActivity()).get(MediaPreviewV2ViewModel.class);
     lifecycleDisposable = new LifecycleDisposable();
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ImageMediaPreviewFragment -> onCreateView");
 
     if (!MediaUtil.isImageType(contentType)) {
       throw new AssertionError("This fragment can only display images");

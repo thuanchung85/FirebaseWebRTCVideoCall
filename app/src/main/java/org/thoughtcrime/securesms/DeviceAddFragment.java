@@ -55,7 +55,7 @@ public class DeviceAddFragment extends LoggingFragment {
 
     scannerView.start(getViewLifecycleOwner(), CameraXModelBlocklist.isBlocklisted());
 
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "DeviceAddFragment -> onCreateView");
 
     Disposable qrDisposable = scannerView
         .getQrData()

@@ -479,8 +479,8 @@ class StoryViewerPageFragment :
       }
     }
 
-    timeoutDisposable.bindTo(viewLifecycleOwner)
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    timeoutDisposable.bindTo(viewLifecycleOwner, "StoryViewerPageFragment -> onRequestSegmentProgressPercentage")
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryViewerPageFragment -> onRequestSegmentProgressPercentage")
     lifecycleDisposable += viewModel.groupDirectReplyObservable.subscribe { opt ->
       if (opt.isPresent) {
         when (val sheet = opt.get()) {

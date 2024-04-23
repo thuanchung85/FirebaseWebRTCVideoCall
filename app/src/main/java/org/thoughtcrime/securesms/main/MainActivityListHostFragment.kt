@@ -78,7 +78,8 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    disposables.bindTo(viewLifecycleOwner)
+    android.util.Log.d("CHUNG", "MainActivityListHostFragment onCreate")
+    disposables.bindTo(viewLifecycleOwner, "MainActivityListHostFragment -> onViewCreated")
 
     _toolbarBackground = view.findViewById(R.id.toolbar_background)
     _toolbar = view.findViewById(R.id.toolbar)

@@ -43,7 +43,7 @@ class VerifyScanFragment : Fragment() {
 
     cameraView.start(viewLifecycleOwner, CameraXModelBlocklist.isBlocklisted())
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "VerifyScanFragment -> onViewCreated")
 
     lifecycleDisposable += cameraView
       .qrData

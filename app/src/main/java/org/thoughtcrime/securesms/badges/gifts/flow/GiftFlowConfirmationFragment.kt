@@ -190,7 +190,7 @@ class GiftFlowConfirmationFragment :
       amountView.text = FiatMoneyUtil.format(resources, state.giftPrices[state.currency]!!, FiatMoneyUtil.formatOptions().trimZerosAfterDecimal())
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "GiftFlowConfirmationFragment -> bindAdapter" )
   }
 
   override fun onDestroyView() {

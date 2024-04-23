@@ -57,7 +57,7 @@ class UsernameQrScannerActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    disposables.bindTo(this)
+    disposables.bindTo(this,"UsernameQrScannerActivity -> onCreate")
 
     val galleryLauncher = registerForActivityResult(UsernameQrImageSelectionActivity.Contract()) { uri ->
       if (uri != null) {

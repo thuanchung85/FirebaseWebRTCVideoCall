@@ -74,7 +74,7 @@ class StripePaymentInProgressFragment : DialogFragment(R.layout.donation_in_prog
       }
     }
 
-    disposables.bindTo(viewLifecycleOwner)
+    disposables.bindTo(viewLifecycleOwner, "StripePaymentInProgressFragment -> onViewCreated")
     disposables += viewModel.state.subscribeBy { stage ->
       presentUiState(stage)
     }

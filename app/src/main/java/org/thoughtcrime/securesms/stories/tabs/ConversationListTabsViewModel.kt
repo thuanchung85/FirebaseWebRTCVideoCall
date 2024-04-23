@@ -94,6 +94,9 @@ class ConversationListTabsViewModel(repository: ConversationListTabRepository) :
     }
   }
 
+
+
+  //cái calss Factory này nó kế thừa Factory interface của ViewModelProvider, mục tiêu là tạo ra 1 viewModel của class truyền vào  hàm create. và tạo xong thi return viewmodel đó ra ngoài
   class Factory(private val repository: ConversationListTabRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
       return modelClass.cast(ConversationListTabsViewModel(repository)) as T

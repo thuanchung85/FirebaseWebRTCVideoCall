@@ -175,10 +175,11 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
   @SuppressLint({ "SourceLockedOrientationActivity", "MissingInflatedId" })
   @Override
   public void onCreate(Bundle savedInstanceState) {
+    Log.d("CHUNG", "WEB RTC CALL ACTIVITY onCreate");
     Log.i(TAG, "onCreate(" + getIntent().getBooleanExtra(EXTRA_STARTED_FROM_FULLSCREEN, false) + ")");
 
     lifecycleDisposable = new LifecycleDisposable();
-    lifecycleDisposable.bindTo(this);
+    lifecycleDisposable.bindTo(this , "WebRtcCallActivity -> onCreate");
 
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

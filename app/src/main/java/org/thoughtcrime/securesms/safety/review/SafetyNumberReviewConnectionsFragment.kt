@@ -41,7 +41,7 @@ class SafetyNumberReviewConnectionsFragment : DSLSettingsFragment(
   override fun bindAdapter(adapter: MappingAdapter) {
     SafetyNumberBucketRowItem.register(adapter)
     SafetyNumberRecipientRowItem.register(adapter)
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "SafetyNumberReviewConnectionsFragment -> bindAdapter")
 
     val done = requireView().findViewById<View>(R.id.done)
     done.setOnClickListener {

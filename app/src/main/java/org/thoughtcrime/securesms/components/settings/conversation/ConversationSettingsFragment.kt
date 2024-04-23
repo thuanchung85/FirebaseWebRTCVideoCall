@@ -282,7 +282,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
       }
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "ConversationSettingsFragment -> bindAdapter")
     lifecycleDisposable += viewModel.events.subscribe { event ->
       @Exhaustive
       when (event) {

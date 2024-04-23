@@ -169,7 +169,7 @@ class StoryGroupReplyFragment :
     composer = view.findViewById(R.id.composer)
     notInGroup = view.findViewById(R.id.not_in_group)
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner)
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "StoryGroupReplyFragment -> onViewCreated")
 
     val emptyNotice: View = requireView().findViewById(R.id.empty_notice)
 

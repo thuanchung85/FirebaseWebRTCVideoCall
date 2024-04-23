@@ -82,7 +82,7 @@ public class EditAboutFragment extends Fragment implements EditProfileActivity.E
     this.saveButton = view.findViewById(R.id.edit_about_save);
 
     lifecycleDisposable = new LifecycleDisposable();
-    lifecycleDisposable.bindTo(getViewLifecycleOwner());
+    lifecycleDisposable.bindTo(getViewLifecycleOwner(), "EditAboutFragment -> onCreateView");
 
     initializeViewModel();
 
