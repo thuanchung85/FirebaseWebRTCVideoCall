@@ -17,7 +17,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/conversation_list_tabs"
-        android:name="org.thoughtcrime.securesms.stories.tabs.ConversationListTabsFragment"
+        android:name="org.thoughtcrime.securesms.stories.tabs.BottomMenuFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/green_50"/>

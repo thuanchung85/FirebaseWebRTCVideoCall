@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -57,8 +58,8 @@ import org.thoughtcrime.securesms.stories.dialogs.StoryContextMenu
 import org.thoughtcrime.securesms.stories.dialogs.StoryDialogs
 import org.thoughtcrime.securesms.stories.my.MyStoriesActivity
 import org.thoughtcrime.securesms.stories.settings.StorySettingsActivity
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTab
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabsViewModel
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuEnum
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuViewModel
 import org.thoughtcrime.securesms.stories.viewer.StoryViewerActivity
 import org.thoughtcrime.securesms.util.PlayStoreUtil
 import org.thoughtcrime.securesms.util.ViewUtil
@@ -68,6 +69,7 @@ import org.thoughtcrime.securesms.util.views.Stub
 import org.thoughtcrime.securesms.util.visible
 import java.util.concurrent.TimeUnit
 
+//this is story fragment, will show in MainActivityListHost when user tap bottom menu button
 /**
  * The "landing page" for Stories.
  */
@@ -90,7 +92,7 @@ class StoriesLandingFragment : DSLSettingsFragment(layoutId = R.layout.stories_l
     }
   )
 
-  private val tabsViewModel: ConversationListTabsViewModel by viewModels(ownerProducer = { requireActivity() })
+  private val tabsViewModel: BottomMenuViewModel by viewModels(ownerProducer = { requireActivity() })
 
   private lateinit var adapter: MappingAdapter
 
@@ -144,6 +146,7 @@ class StoriesLandingFragment : DSLSettingsFragment(layoutId = R.layout.stories_l
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
+    Log.d("CHUNG", "StoriesLandingFragment -> onViewCreated")
     reminderView = ViewUtil.findStubById(view, R.id.reminder)
     updateReminders()
   }
@@ -257,7 +260,7 @@ class StoriesLandingFragment : DSLSettingsFragment(layoutId = R.layout.stories_l
     )
 
     lifecycleDisposable += tabsViewModel.tabClickEvents
-      .filter { it == ConversationListTab.STORIES }
+      .filter { it == BottomMenuEnum.STORIES }
       .subscribeBy(onNext = {
         val layoutManager = recyclerView?.layoutManager as? LinearLayoutManager ?: return@subscribeBy
         if (layoutManager.findFirstVisibleItemPosition() <= LIST_SMOOTH_SCROLL_TO_TOP_THRESHOLD) {

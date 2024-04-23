@@ -14,17 +14,17 @@ import io.reactivex.rxjava3.subjects.Subject
 import org.thoughtcrime.securesms.stories.Stories
 import org.thoughtcrime.securesms.util.rx.RxStore
 
-class ConversationListTabsViewModel(repository: ConversationListTabRepository) : ViewModel() {
-  private val store = RxStore(ConversationListTabsState())
+class BottomMenuViewModel(repository: BottomMenuRepository) : ViewModel() {
+  private val store = RxStore(BottomMenuState())
 
-  val stateSnapshot: ConversationListTabsState
+  val stateSnapshot: BottomMenuState
     get() = store.state
 
-  val state: Flowable<ConversationListTabsState> = store.stateFlowable.distinctUntilChanged().observeOn(AndroidSchedulers.mainThread())
+  val state: Flowable<BottomMenuState> = store.stateFlowable.distinctUntilChanged().observeOn(AndroidSchedulers.mainThread())
   val disposables = CompositeDisposable()
 
-  private val internalTabClickEvents: Subject<ConversationListTab> = PublishSubject.create()
-  val tabClickEvents: Observable<ConversationListTab> = internalTabClickEvents.filter { Stories.isFeatureEnabled() }
+  private val internalTabClickEvents: Subject<BottomMenuEnum> = PublishSubject.create()
+  val tabClickEvents: Observable<BottomMenuEnum> = internalTabClickEvents.filter { Stories.isFeatureEnabled() }
 
   init {
     disposables += performStoreUpdate(repository.getNumberOfUnreadMessages()) { unreadChats, state ->
@@ -49,21 +49,21 @@ class ConversationListTabsViewModel(repository: ConversationListTabRepository) :
   }
 
   fun onChatsSelected() {
-    Log.d("CHUNG", "ConversationListTabsViewModel -> onChatsSelected: ")
-    internalTabClickEvents.onNext(ConversationListTab.CHATS)
-    performStoreUpdate { it.copy(tab = ConversationListTab.CHATS) }
+    Log.d("CHUNG", "BottomMenuViewModel -> onChatsSelected: ")
+    internalTabClickEvents.onNext(BottomMenuEnum.CHATS)
+    performStoreUpdate { it.copy(tab = BottomMenuEnum.CHATS) }
   }
 
   fun onCallsSelected() {
-    Log.d("CHUNG", "ConversationListTabsViewModel -> onCallsSelected: ")
-    internalTabClickEvents.onNext(ConversationListTab.CALLS)
-    performStoreUpdate { it.copy(tab = ConversationListTab.CALLS) }
+    Log.d("CHUNG", "BottomMenuViewModel -> onCallsSelected: ")
+    internalTabClickEvents.onNext(BottomMenuEnum.CALLS)
+    performStoreUpdate { it.copy(tab = BottomMenuEnum.CALLS) }
   }
 
   fun onStoriesSelected() {
-    Log.d("CHUNG", "ConversationListTabsViewModel -> onStoriesSelected: ")
-    internalTabClickEvents.onNext(ConversationListTab.STORIES)
-    performStoreUpdate { it.copy(tab = ConversationListTab.STORIES) }
+    Log.d("CHUNG", "BottomMenuViewModel -> onStoriesSelected: ")
+    internalTabClickEvents.onNext(BottomMenuEnum.STORIES)
+    performStoreUpdate { it.copy(tab = BottomMenuEnum.STORIES) }
   }
 
   fun onSearchOpened() {
@@ -86,13 +86,13 @@ class ConversationListTabsViewModel(repository: ConversationListTabRepository) :
     performStoreUpdate { it.copy(visibilityState = it.visibilityState.copy(isShowingArchived = isShowingArchived)) }
   }
 
-  private fun performStoreUpdate(fn: (ConversationListTabsState) -> ConversationListTabsState) {
+  private fun performStoreUpdate(fn: (BottomMenuState) -> BottomMenuState) {
     store.update {
       fn(it.copy(prevTab = it.tab))
     }
   }
 
-  private fun <T : Any> performStoreUpdate(flowable: Flowable<T>, fn: (T, ConversationListTabsState) -> ConversationListTabsState): Disposable {
+  private fun <T : Any> performStoreUpdate(flowable: Flowable<T>, fn: (T, BottomMenuState) -> BottomMenuState): Disposable {
     return store.update(flowable) { t, state ->
       fn(t, state.copy(prevTab = state.tab))
     }
@@ -101,9 +101,9 @@ class ConversationListTabsViewModel(repository: ConversationListTabRepository) :
 
 
   //cái calss Factory này nó kế thừa Factory interface của ViewModelProvider, mục tiêu là tạo ra 1 viewModel của class truyền vào  hàm create. và tạo xong thi return viewmodel đó ra ngoài
-  class Factory(private val repository: ConversationListTabRepository) : ViewModelProvider.Factory {
+  class Factory(private val repository: BottomMenuRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-      return modelClass.cast(ConversationListTabsViewModel(repository)) as T
+      return modelClass.cast(BottomMenuViewModel(repository)) as T
     }
   }
 }

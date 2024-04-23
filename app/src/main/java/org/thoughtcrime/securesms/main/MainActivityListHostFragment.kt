@@ -35,9 +35,9 @@ import org.thoughtcrime.securesms.keyvalue.SignalStore
 import org.thoughtcrime.securesms.notifications.profiles.NotificationProfile
 import org.thoughtcrime.securesms.notifications.profiles.NotificationProfiles
 import org.thoughtcrime.securesms.recipients.Recipient
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTab
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabsState
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabsViewModel
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuEnum
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuState
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuViewModel
 import org.thoughtcrime.securesms.util.AvatarUtil
 import org.thoughtcrime.securesms.util.BottomSheetUtil
 import org.thoughtcrime.securesms.util.Material3OnScrollHelper
@@ -56,8 +56,8 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
     private val TAG = Log.tag(MainActivityListHostFragment::class.java)
   }
 
-  //chổ này là biến nắm giữa conversation
-  private val conversationListTabsViewModel: ConversationListTabsViewModel by viewModels(ownerProducer = { requireActivity() })
+  //chổ này là biến nắm giữa bottom menu view model , when user tap bottom menu view model will change state
+  private val bottomMenuViewModel: BottomMenuViewModel by viewModels(ownerProducer = { requireActivity() })
 
   //biến lắn nghe life cycle event
   private val disposables: LifecycleDisposable = LifecycleDisposable()
@@ -116,11 +116,15 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
 
     (requireActivity() as AppCompatActivity).setSupportActionBar(_toolbar)
 
-    disposables += conversationListTabsViewModel.state.subscribeBy { state ->
+
+    //đang ký lắng nghe bottomMenuViewModel coi khi nào có event thay đổi
+    disposables += bottomMenuViewModel.state.subscribeBy { state ->
       val controller: NavController = requireView().findViewById<View>(R.id.fragment_container).findNavController()
       //when user tap menu that will change controller.currentDestination?.id
       //khi controller.currentDestination?.id change thi load fragment tương ứng
-      when (controller.currentDestination?.id) {
+      val fragmentCurrent = controller.currentDestination?.id
+      android.util.Log.d("CHUNG", "bottomMenuViewModel.state.subscribeBy >-> fragmentCurrent")
+      when (fragmentCurrent) {
         R.id.conversationListFragment -> goToStateFromConversationList(state, controller)
         R.id.conversationListArchiveFragment -> Unit
         R.id.storiesLandingFragment -> goToStateFromStories(state, controller)
@@ -130,8 +134,9 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
   }
 
   //đi tới conversationListFragment
-  private fun goToStateFromConversationList(state: ConversationListTabsState, navController: NavController) {
-    if (state.tab == ConversationListTab.CHATS) {
+  private fun goToStateFromConversationList(state: BottomMenuState, navController: NavController) {
+    android.util.Log.d("CHUNG", "goToStateFromConversationList >-> CHATS")
+    if (state.tab == BottomMenuEnum.CHATS) {
       return
     } else {
       val cameraFab = requireView().findViewById<View?>(R.id.camera_fab)
@@ -151,7 +156,7 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
         else -> null
       }
 
-      val destination = if (state.tab == ConversationListTab.STORIES) {
+      val destination = if (state.tab == BottomMenuEnum.STORIES) {
         R.id.action_conversationListFragment_to_storiesLandingFragment
       } else {
         R.id.action_conversationListFragment_to_callLogFragment
@@ -167,20 +172,22 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
   }
 
   //đi tới callLogFragment
-  private fun goToStateFromCalling(state: ConversationListTabsState, navController: NavController) {
+  private fun goToStateFromCalling(state: BottomMenuState, navController: NavController) {
+    android.util.Log.d("CHUNG", "goToStateFromCalling >-> CALLS")
     when (state.tab) {
-      ConversationListTab.CALLS -> return
-      ConversationListTab.CHATS -> navController.popBackStack(R.id.conversationListFragment, false)
-      ConversationListTab.STORIES -> navController.navigate(R.id.action_callLogFragment_to_storiesLandingFragment)
+      BottomMenuEnum.CALLS -> return
+      BottomMenuEnum.CHATS -> navController.popBackStack(R.id.conversationListFragment, false)
+      BottomMenuEnum.STORIES -> navController.navigate(R.id.action_callLogFragment_to_storiesLandingFragment)
     }
   }
 
   //đi tới storiesLandingFragment
-  private fun goToStateFromStories(state: ConversationListTabsState, navController: NavController) {
+  private fun goToStateFromStories(state: BottomMenuState, navController: NavController) {
+    android.util.Log.d("CHUNG", "goToStateFromStories >-> STORIES")
     when (state.tab) {
-      ConversationListTab.STORIES -> return
-      ConversationListTab.CHATS -> navController.popBackStack(R.id.conversationListFragment, false)
-      ConversationListTab.CALLS -> navController.navigate(R.id.action_storiesLandingFragment_to_callLogFragment)
+      BottomMenuEnum.STORIES -> return
+      BottomMenuEnum.CHATS -> navController.popBackStack(R.id.conversationListFragment, false)
+      BottomMenuEnum.CALLS -> navController.navigate(R.id.action_storiesLandingFragment_to_callLogFragment)
     }
   }
 
@@ -268,19 +275,19 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
   //có 3 chổ co khả năng gọi cho hàm này là ConversationListFragment, CallLogFragment, StoriesLandingFragment
   override fun onSearchOpened() {
     android.util.Log.d("CHUNG", "MainActivityListHostFragment -> onSearchOpened")
-    conversationListTabsViewModel.onSearchOpened()
+    bottomMenuViewModel.onSearchOpened()
     _searchToolbar.get().clearText()
     _searchToolbar.get().display(_searchAction.x + (_searchAction.width / 2.0f), _searchAction.y + (_searchAction.height / 2.0f))
   }
 
   override fun onSearchClosed() {
     android.util.Log.d("CHUNG", "MainActivityListHostFragment -> onSearchClosed")
-    conversationListTabsViewModel.onSearchClosed()
+    bottomMenuViewModel.onSearchClosed()
   }
 
   override fun onMultiSelectStarted() {
     presentToolbarForMultiselect()
-    conversationListTabsViewModel.onMultiSelectStarted()
+    bottomMenuViewModel.onMultiSelectStarted()
   }
 
   override fun onMultiSelectFinished() {
@@ -289,7 +296,7 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
       presentToolbarForDestination(currentDestination)
     }
 
-    conversationListTabsViewModel.onMultiSelectFinished()
+    bottomMenuViewModel.onMultiSelectFinished()
   }
 
   private fun initializeProfileIcon(recipient: Recipient) {
@@ -380,22 +387,22 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
   private fun presentToolbarForDestination(destination: NavDestination) {
     when (destination.id) {
       R.id.conversationListFragment -> {
-        conversationListTabsViewModel.isShowingArchived(false)
+        bottomMenuViewModel.isShowingArchived(false)
         presentToolbarForConversationListFragment()
       }
 
       R.id.conversationListArchiveFragment -> {
-        conversationListTabsViewModel.isShowingArchived(true)
+        bottomMenuViewModel.isShowingArchived(true)
         presentToolbarForConversationListArchiveFragment()
       }
 
       R.id.storiesLandingFragment -> {
-        conversationListTabsViewModel.isShowingArchived(false)
+        bottomMenuViewModel.isShowingArchived(false)
         presentToolbarForStoriesLandingFragment()
       }
 
       R.id.callLogFragment -> {
-        conversationListTabsViewModel.isShowingArchived(false)
+        bottomMenuViewModel.isShowingArchived(false)
         presentToolbarForCallLogFragment()
       }
     }

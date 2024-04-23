@@ -59,8 +59,8 @@ import org.thoughtcrime.securesms.dependencies.ApplicationDependencies
 import org.thoughtcrime.securesms.main.Material3OnScrollHelperBinder
 import org.thoughtcrime.securesms.main.SearchBinder
 import org.thoughtcrime.securesms.recipients.Recipient
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTab
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabsViewModel
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuEnum
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuViewModel
 import org.thoughtcrime.securesms.util.CommunicationActions
 import org.thoughtcrime.securesms.util.FeatureFlags
 import org.thoughtcrime.securesms.util.ViewUtil
@@ -90,7 +90,7 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
 
   private lateinit var signalBottomActionBarController: SignalBottomActionBarController
 
-  private val tabsViewModel: ConversationListTabsViewModel by viewModels(ownerProducer = { requireActivity() })
+  private val tabsViewModel: BottomMenuViewModel by viewModels(ownerProducer = { requireActivity() })
 
   private val menuProvider = object : MenuProvider {
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -241,7 +241,7 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
 
   private fun initializeTapToScrollToTop(scrollToPositionDelegate: ScrollToPositionDelegate) {
     disposables += tabsViewModel.tabClickEvents
-      .filter { it == ConversationListTab.CALLS }
+      .filter { it == BottomMenuEnum.CALLS }
       .subscribeBy(onNext = {
         scrollToPositionDelegate.resetScrollPosition()
       })

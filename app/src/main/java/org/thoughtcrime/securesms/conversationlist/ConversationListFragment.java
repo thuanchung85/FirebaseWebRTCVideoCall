@@ -161,8 +161,8 @@ import org.thoughtcrime.securesms.search.MessageResult;
 import org.thoughtcrime.securesms.service.KeyCachingService;
 import org.thoughtcrime.securesms.sms.MessageSender;
 import org.thoughtcrime.securesms.storage.StorageSyncHelper;
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTab;
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabsViewModel;
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuEnum;
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuViewModel;
 import org.thoughtcrime.securesms.util.AppForegroundObserver;
 import org.thoughtcrime.securesms.util.AppStartup;
 import org.thoughtcrime.securesms.util.CachedInflater;
@@ -240,9 +240,9 @@ public class ConversationListFragment extends MainFragment implements ActionMode
 
   protected ConversationListArchiveItemDecoration archiveDecoration;
   protected ConversationListItemAnimator          itemAnimator;
-  private   Stopwatch                             startupStopwatch;
-  private   ConversationListTabsViewModel         conversationListTabsViewModel;
-  private   ContactSearchMediator                 contactSearchMediator;
+  private Stopwatch             startupStopwatch;
+  private BottomMenuViewModel   bottomMenuViewModel;
+  private ContactSearchMediator contactSearchMediator;
 
   public static ConversationListFragment newInstance() {
     return new ConversationListFragment();
@@ -424,11 +424,11 @@ public class ConversationListFragment extends MainFragment implements ActionMode
       }
     });
 
-    conversationListTabsViewModel = new ViewModelProvider(requireActivity()).get(ConversationListTabsViewModel.class);
+    bottomMenuViewModel = new ViewModelProvider(requireActivity()).get(BottomMenuViewModel.class);
 
     lifecycleDisposable.bindTo(getViewLifecycleOwner(), "ConversationListFragment -> handleOnBackPressed");
-    lifecycleDisposable.add(conversationListTabsViewModel.getTabClickEvents().filter(tab -> tab == ConversationListTab.CHATS)
-                                                         .subscribe(unused -> {
+    lifecycleDisposable.add(bottomMenuViewModel.getTabClickEvents().filter(tab -> tab == BottomMenuEnum.CHATS)
+                                               .subscribe(unused -> {
                                                            LinearLayoutManager layoutManager            = (LinearLayoutManager) list.getLayoutManager();
                                                            int                 firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition();
                                                            if (firstVisibleItemPosition <= LIST_SMOOTH_SCROLL_TO_TOP_THRESHOLD) {

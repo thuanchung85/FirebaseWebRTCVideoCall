@@ -1,8 +1,8 @@
 package org.thoughtcrime.securesms.stories.tabs
 
-data class ConversationListTabsState(
-  val tab: ConversationListTab = ConversationListTab.CALLS,
-  val prevTab: ConversationListTab = ConversationListTab.STORIES,
+data class BottomMenuState(
+  val tab: BottomMenuEnum = BottomMenuEnum.CALLS,
+  val prevTab: BottomMenuEnum = BottomMenuEnum.STORIES,
   val unreadMessagesCount: Long = 0L,
   val unreadCallsCount: Long = 0L,
   val unreadStoriesCount: Long = 0L,

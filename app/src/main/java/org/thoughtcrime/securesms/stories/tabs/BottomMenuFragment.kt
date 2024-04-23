@@ -21,7 +21,7 @@ import org.signal.core.util.concurrent.LifecycleDisposable
 import org.signal.core.util.dp
 import org.thoughtcrime.securesms.R
 import org.thoughtcrime.securesms.components.ViewBinderDelegate
-import org.thoughtcrime.securesms.databinding.ConversationListTabsBinding
+import org.thoughtcrime.securesms.databinding.BottomMenuBinding
 import org.thoughtcrime.securesms.keyvalue.SignalStore
 import org.thoughtcrime.securesms.stories.Stories
 import org.thoughtcrime.securesms.util.visible
@@ -31,11 +31,11 @@ import org.thoughtcrime.securesms.util.visible
 /**
  * Displays the "Chats" and "Stories" tab to a user.
  */
-class ConversationListTabsFragment : Fragment(R.layout.conversation_list_tabs) {
+class BottomMenuFragment : Fragment(R.layout.bottom_menu) {
 
-  private val viewModel: ConversationListTabsViewModel by viewModels(ownerProducer = { requireActivity() })
+  private val viewModel: BottomMenuViewModel by viewModels(ownerProducer = { requireActivity() })
   private val disposables: LifecycleDisposable = LifecycleDisposable()
-  private val binding by ViewBinderDelegate(ConversationListTabsBinding::bind)
+  private val binding by ViewBinderDelegate(BottomMenuBinding::bind)
   private var shouldBeImmediate = true
   private var pillAnimator: Animator? = null
 
@@ -44,8 +44,8 @@ class ConversationListTabsFragment : Fragment(R.layout.conversation_list_tabs) {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-    Log.d("CHUNG", "ConversationListTabsFragment onViewCreated")
-    disposables.bindTo(viewLifecycleOwner, "ConversationListTabsFragment -> onViewCreated")
+    Log.d("CHUNG", "BottomMenuFragment onViewCreated")
+    disposables.bindTo(viewLifecycleOwner, "BottomMenuFragment -> onViewCreated")
 
     val iconTint = ContextCompat.getColor(requireContext(), R.color.signal_colorOnSecondaryContainer)
 
@@ -69,17 +69,17 @@ class ConversationListTabsFragment : Fragment(R.layout.conversation_list_tabs) {
 
     //this is place when user tap on 3 buttons bottom menu
     view.findViewById<View>(R.id.chats_tab_touch_point).setOnClickListener {
-      Log.d("CHUNG", "ConversationListTabsFragment CHAT TAP")
+      Log.d("CHUNG", "BottomMenuFragment CHAT TAP")
       viewModel.onChatsSelected()
     }
 
     view.findViewById<View>(R.id.calls_tab_touch_point).setOnClickListener {
-      Log.d("CHUNG", "ConversationListTabsFragment CALL TAP")
+      Log.d("CHUNG", "BottomMenuFragment CALL TAP")
       viewModel.onCallsSelected()
     }
 
     view.findViewById<View>(R.id.stories_tab_touch_point).setOnClickListener {
-      Log.d("CHUNG", "ConversationListTabsFragment STORIES TAP")
+      Log.d("CHUNG", "BottomMenuFragment STORIES TAP")
       viewModel.onStoriesSelected()
     }
 
@@ -140,30 +140,30 @@ class ConversationListTabsFragment : Fragment(R.layout.conversation_list_tabs) {
     update(viewModel.stateSnapshot, true)
   }
 
-  private fun update(state: ConversationListTabsState, immediate: Boolean) {
-    binding.chatsTabIcon.isSelected = state.tab == ConversationListTab.CHATS
-    binding.chatsPill.isSelected = state.tab == ConversationListTab.CHATS
+  private fun update(state: BottomMenuState, immediate: Boolean) {
+    binding.chatsTabIcon.isSelected = state.tab == BottomMenuEnum.CHATS
+    binding.chatsPill.isSelected = state.tab == BottomMenuEnum.CHATS
 
     if (Stories.isFeatureEnabled()) {
-      binding.storiesTabIcon.isSelected = state.tab == ConversationListTab.STORIES
-      binding.storiesPill.isSelected = state.tab == ConversationListTab.STORIES
+      binding.storiesTabIcon.isSelected = state.tab == BottomMenuEnum.STORIES
+      binding.storiesPill.isSelected = state.tab == BottomMenuEnum.STORIES
     }
 
-    binding.callsTabIcon.isSelected = state.tab == ConversationListTab.CALLS
-    binding.callsPill.isSelected = state.tab == ConversationListTab.CALLS
+    binding.callsTabIcon.isSelected = state.tab == BottomMenuEnum.CALLS
+    binding.callsPill.isSelected = state.tab == BottomMenuEnum.CALLS
 
     val hasStateChange = state.tab != state.prevTab
     if (immediate) {
       binding.chatsTabIcon.pauseAnimation()
-      binding.chatsTabIcon.progress = if (state.tab == ConversationListTab.CHATS) 1f else 0f
+      binding.chatsTabIcon.progress = if (state.tab == BottomMenuEnum.CHATS) 1f else 0f
 
       if (Stories.isFeatureEnabled()) {
         binding.storiesTabIcon.pauseAnimation()
-        binding.storiesTabIcon.progress = if (state.tab == ConversationListTab.STORIES) 1f else 0f
+        binding.storiesTabIcon.progress = if (state.tab == BottomMenuEnum.STORIES) 1f else 0f
       }
 
       binding.callsTabIcon.pauseAnimation()
-      binding.callsTabIcon.progress = if (state.tab == ConversationListTab.CALLS) 1f else 0f
+      binding.callsTabIcon.progress = if (state.tab == BottomMenuEnum.CALLS) 1f else 0f
 
       runPillAnimation(
         0,

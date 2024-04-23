@@ -13,7 +13,6 @@ import android.view.ViewTreeObserver;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -30,8 +29,8 @@ import org.thoughtcrime.securesms.devicetransfer.olddevice.OldDeviceExitActivity
 import org.thoughtcrime.securesms.keyvalue.SignalStore;
 import org.thoughtcrime.securesms.net.DeviceTransferBlockingInterceptor;
 import org.thoughtcrime.securesms.notifications.VitalsViewModel;
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabRepository;
-import org.thoughtcrime.securesms.stories.tabs.ConversationListTabsViewModel;
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuRepository;
+import org.thoughtcrime.securesms.stories.tabs.BottomMenuViewModel;
 import org.thoughtcrime.securesms.util.AppStartup;
 import org.thoughtcrime.securesms.util.CachedInflater;
 import org.thoughtcrime.securesms.util.CommunicationActions;
@@ -57,8 +56,8 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   private final MainNavigator navigator    = new MainNavigator(this);
 
 
-  private ConversationListTabsViewModel conversationListTabsViewModel;
-  private VitalsViewModel               vitalsViewModel;
+  private BottomMenuViewModel bottomMenuViewModel;
+  private VitalsViewModel     vitalsViewModel;
 
 
   //đây là biến lưu trữ mediaController của MainActivity
@@ -123,11 +122,11 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
 
 
     //khởi tạo 1 cái kho "repository" chuyên dùng để lo vấn đề  ConversationList
-    ConversationListTabRepository repository = new ConversationListTabRepository();
+    BottomMenuRepository repository = new BottomMenuRepository();
     //bọc cái repository vào 1 object gọi là factory, factory này là 1 ViewModel có dạng ConversationListTabViewModel
-    ConversationListTabsViewModel.Factory factory    = new ConversationListTabsViewModel.Factory(repository);
+    BottomMenuViewModel.Factory factory = new BottomMenuViewModel.Factory(repository);
     //factory được tạo ra để pass vào ViewModelProvider để tạo ra 1 Custom Initialization ViewModel mới
-    conversationListTabsViewModel = new ViewModelProvider(this, factory).get(ConversationListTabsViewModel.class);
+    bottomMenuViewModel = new ViewModelProvider(this, factory).get(BottomMenuViewModel.class);
     updateTabVisibility();
 
 

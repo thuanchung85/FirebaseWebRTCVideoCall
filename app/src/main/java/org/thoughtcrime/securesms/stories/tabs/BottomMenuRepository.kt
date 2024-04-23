@@ -7,7 +7,7 @@ import org.thoughtcrime.securesms.recipients.Recipient
 
 
 //class này chuyên xữ lý lấy từ Database ra các số liệu về unreal message, storie....
-class ConversationListTabRepository {
+class BottomMenuRepository {
 
   //tạo 1 flowable để lấy dữ liệu từ database, trả ra 1 flowable , mà flowable này nó phải được tạo ra từ việc tạo 1 Threads bắn vào database lấy data ra xong hết.
   fun getNumberOfUnreadMessages(): Flowable<Long> {
