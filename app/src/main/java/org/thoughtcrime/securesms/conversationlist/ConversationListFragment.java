@@ -885,6 +885,7 @@ public class ConversationListFragment extends MainFragment implements ActionMode
         SignalLocalMetrics.ColdStart.onConversationListDataLoaded();
         defaultAdapter.unregisterAdapterDataObserver(this);
         if (requireActivity() instanceof MainActivity) {
+          //tác động vào MainActivity cho phép MainActivity được render lên screen tiếp, kich hoạt biến của main activyty onFirstRender = true
           ((MainActivity) requireActivity()).onFirstRender();
         }
         list.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {

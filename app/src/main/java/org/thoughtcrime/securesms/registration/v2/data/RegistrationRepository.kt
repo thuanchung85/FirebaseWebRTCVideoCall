@@ -234,6 +234,7 @@ object RegistrationRepository {
    * 2. (Optional) If the session has any proof requirements ("challenges"), the user must solve them and submit the proof.
    * 3. Once the service responds we are allowed to, we request the verification code.
    */
+  //chổ này gởi lên Fire cloud message để lấy OTP SMS
   suspend fun requestSmsCode(context: Context, e164: String, password: String, mcc: String?, mnc: String?, mode: Mode = Mode.SMS_WITHOUT_LISTENER): NetworkResult<RegistrationSessionMetadataResponse> =
     withContext(Dispatchers.IO) {
       val fcmToken: String? = FcmUtil.getToken(context).orElse(null)

@@ -47,7 +47,10 @@ class VoiceNoteMediaController(val activity: FragmentActivity, private var postp
   val voiceNotePlaybackState = MutableLiveData(VoiceNotePlaybackState.NONE)
   val voiceNotePlayerViewState: LiveData<Optional<VoiceNotePlayerView.State>>
   private val disposables: LifecycleDisposable = LifecycleDisposable()
+
+  //đây là object MediaController, object này được dùng bởi chính class này, vì class này được thiết kế để làm wrapper của MediaController để broadcast ra event playback của MediaController
   private var mediaControllerProperty: MediaController? = null
+
   private lateinit var voiceNoteProximityWakeLockManager: VoiceNoteProximityWakeLockManager
   private var progressEventHandler: ProgressEventHandler? = null
   private var queuedPlayback: PlaybackItem? = null

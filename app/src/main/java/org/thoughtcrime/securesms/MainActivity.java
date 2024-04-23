@@ -53,14 +53,18 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
   private final DynamicTheme  dynamicTheme = new DynamicNoActionBarTheme();
   private final MainNavigator navigator    = new MainNavigator(this);
 
-  private VoiceNoteMediaController      mediaController;
+
   private ConversationListTabsViewModel conversationListTabsViewModel;
   private VitalsViewModel               vitalsViewModel;
 
 
+  //đây là biến lưu trữ mediaController của MainActivity
+  private VoiceNoteMediaController      mediaController;
+
   //đây chính là 1 Lifecycle Observer chuyên dùng để nhận event onCreate,onStart...onDestroy của object Lifecycle Owner
   private final LifecycleDisposable lifecycleDisposable = new LifecycleDisposable();
 
+  //đây là biến khống chế việc render view ra màn hình
   private boolean onFirstRender = false;
   //==================Properties===================//
 
@@ -84,10 +88,13 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
           @Override
           public boolean onPreDraw() {
             // Use pre draw listener to delay drawing frames till conversation list is ready
+            //có cái cờ onFirstRender để chắc chắn là adapter của conversation list đã có data xong thì  hiện main activity view
             if (onFirstRender == true) {
               content.getViewTreeObserver().removeOnPreDrawListener(this);
+              //return true nghĩa là được ok thông qua để render tiếp
               return true;
             } else {
+              //return false nghĩa là cancel quá trình vẽ ra màn hình
               return false;
             }
           }
@@ -101,6 +108,7 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     //lý do ta cần cái này là vì ai cần 1 cơ chế để các class khác thấy được vòng đời sống của main activity này
     lifecycleDisposable.bindTo(this);
 
+    //khởi tạo mediaController cho main activity
     mediaController = new VoiceNoteMediaController(this, true);
 
     ConversationListTabRepository         repository = new ConversationListTabRepository();
@@ -275,12 +283,20 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     }
   }
 
+
+
+
+  //hàm này để cho các activity khác gọi để khống chế việc ,có hay không cho phép main activity render tiếp
   public void onFirstRender() {
     onFirstRender = true;
   }
 
+
+  //đây là method bắc buộc phải implement bởi vì MainActivity đã implement interface VoiceNoteMediaControllerOwner
+  //method này là get method tư động đươc tạo ra, do interface VoiceNoteMediaControllerOwner có khai báo biến val voiceNoteMediaController
   @Override
   public @NonNull VoiceNoteMediaController getVoiceNoteMediaController() {
+    //trả ra chính object mediaController của MainActivity
     return mediaController;
   }
 

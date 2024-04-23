@@ -212,6 +212,8 @@ import okhttp3.ResponseBody;
 /**
  * @author Moxie Marlinspike
  */
+
+//đây là class thực hiện các lệnh về network service, nó được dùng trong class Registration, ServiceAccount....
 public class PushServiceSocket {
 
   private static final String TAG = PushServiceSocket.class.getSimpleName();

@@ -44,6 +44,7 @@ class RegistrationApi(
    *
    * @param androidSmsRetrieverSupported whether the system framework will automatically parse the incoming verification message.
    */
+  //chổ này thực hiện request mã OTP
   fun requestSmsVerificationCode(sessionId: String?, locale: Locale?, androidSmsRetrieverSupported: Boolean): NetworkResult<RegistrationSessionMetadataResponse> {
     return NetworkResult.fromFetch {
       pushServiceSocket.requestVerificationCode(sessionId, locale, androidSmsRetrieverSupported, PushServiceSocket.VerificationCodeTransport.SMS)
