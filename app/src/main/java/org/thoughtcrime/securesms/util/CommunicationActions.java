@@ -92,8 +92,12 @@ public class CommunicationActions {
           if (resultCode == 1) {
             startCallInternal(callContext, recipient, false, false);
           } else {
+
+            //hiện ra dialog box xác nhận call 1 người khác
+            String s =  callContext.getContext().getResources().getString(R.string.CommunicationActions_start_voice_call);
             new MaterialAlertDialogBuilder(callContext.getContext())
-                .setMessage(R.string.CommunicationActions_start_voice_call)
+                .setMessage( s + " " + recipient.getDisplayName(callContext.getContext()))
+                //kich hoạt intent call
                 .setPositiveButton(R.string.CommunicationActions_call, (d, w) -> startCallInternal(callContext, recipient, false, false))
                 .setNegativeButton(R.string.CommunicationActions_cancel, (d, w) -> d.dismiss())
                 .setCancelable(true)
@@ -382,11 +386,13 @@ public class CommunicationActions {
   }
 
   private static void startCallInternal(@NonNull CallContext callContext, @NonNull Recipient recipient, boolean isVideo, boolean fromCallLink) {
+    Log.w("CHUNG", "CHUNG CommunicationActions -> startCallInternal");
     if (isVideo) startVideoCallInternal(callContext, recipient, fromCallLink);
     else         startAudioCallInternal(callContext, recipient);
   }
 
   private static void startAudioCallInternal(@NonNull CallContext callContext, @NonNull Recipient recipient) {
+    Log.w("CHUNG", "CHUNG CommunicationActions -> startAudioCallInternal AUDIO");
     callContext.getPermissionsBuilder()
                .request(Manifest.permission.RECORD_AUDIO)
                .ifNecessary()
@@ -394,15 +400,20 @@ public class CommunicationActions {
                    R.drawable.ic_mic_solid_24)
                .withPermanentDenialDialog(callContext.getContext().getString(R.string.ConversationActivity__to_call_s_signal_needs_access_to_your_microphone, recipient.getDisplayName(callContext.getContext())))
                .onAllGranted(() -> {
+                 Log.w("CHUNG", "CHUNG -> START CALL AUDIO INTENT Web Real-Time Communication");
+                 Log.w("CHUNG", "CHUNG -> .........");
                  ApplicationDependencies.getSignalCallManager().startOutgoingAudioCall(recipient);
 
                  MessageSender.onMessageSent();
 
+                 //class thực hiện call qua internet Web Real-Time Communication
                  Intent activityIntent = new Intent(callContext.getContext(), WebRtcCallActivity.class);
 
                  activityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                  callContext.startActivity(activityIntent);
+                 Log.w("CHUNG", "CHUNG -> .........");
+
                })
                .execute();
   }

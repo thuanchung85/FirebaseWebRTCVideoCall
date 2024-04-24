@@ -32,6 +32,7 @@ import androidx.constraintlayout.widget.Guideline;
 import androidx.core.util.Consumer;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -45,6 +46,8 @@ import org.signal.core.util.DimensionUnit;
 import org.signal.core.util.SetUtil;
 import org.signal.core.util.ThreadUtil;
 import org.signal.core.util.logging.Log;
+import org.thoughtcrime.securesms.PLAYGROUND.ChatAdapter;
+import org.thoughtcrime.securesms.PLAYGROUND.myMessage;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.components.AccessibleToggleButton;
 import org.thoughtcrime.securesms.components.AvatarImageView;
@@ -72,7 +75,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class WebRtcCallView extends InsetAwareConstraintLayout {
+//class chính là view đươc call lên bởi tag nằm trong file webrtc_call_activity.xml, nó làm được vậy là bởi vì nó kế thừa InsetAwareConstraintLayout
+//InsetAwareConstraintLayout is a custom subclass of ConstraintLayout provided by the Material Components library in Android.
+//It is designed to handle system window insets automatically,
+//allowing your UI to properly handle things like the status bar, navigation bar, and display cutouts on devices with notches.
+
+public class WebRtcCallView extends InsetAwareConstraintLayout
+{
 
   private static final String TAG = Log.tag(WebRtcCallView.class);
 
@@ -149,6 +158,14 @@ public class WebRtcCallView extends InsetAwareConstraintLayout {
   private ContactPhoto              previousLocalAvatar;
   private LayoutPositions           previousLayoutPositions = null;
 
+
+  ///=======CHUNG===///
+
+  private RecyclerView    recyclerView;
+  private ChatAdapter     chatAdapter;
+  private List<myMessage> messageList;
+//=======CHUNG====//
+
   public WebRtcCallView(@NonNull Context context) {
     this(context, null);
   }
@@ -156,7 +173,32 @@ public class WebRtcCallView extends InsetAwareConstraintLayout {
   public WebRtcCallView(@NonNull Context context, @Nullable AttributeSet attrs) {
     super(context, attrs);
 
+    Log.e("CHUNG", " CHUNG -> WebRtcCallView created.");
     inflate(context, R.layout.webrtc_call_view, this);
+    Log.e("CHUNG", " CHUNG -> WebRtcCallView inflate. -> R.layout.webrtc_call_view");
+
+    //tạo recyle view cua minh
+    messageList = new ArrayList<>();
+    messageList.add(new myMessage("Hello, this is a test message.", 1));
+    messageList.add(new myMessage("This is another test message.", 0));
+    messageList.add(new myMessage("This is a third test message.", 1));
+    messageList.add(new myMessage("Hello, this is a test message.", 1));
+    messageList.add(new myMessage("This is another test message.", 0));
+    messageList.add(new myMessage("This is a third test message.", 1));
+    messageList.add(new myMessage("Hello, this is a test message.", 1));
+    messageList.add(new myMessage("This is another test message.", 0));
+    messageList.add(new myMessage("This is a third test message.", 1));
+    messageList.add(new myMessage("Hello, this is a test message.", 1));
+    messageList.add(new myMessage("This is another test message.", 0));
+    messageList.add(new myMessage("This is a third test message.", 1));
+
+    chatAdapter = new ChatAdapter(messageList);
+    recyclerView = findViewById(R.id.PG_recyclerView);
+    recyclerView.setNestedScrollingEnabled(false);
+    recyclerView.setAdapter(chatAdapter);
+    recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+
   }
 
   @SuppressWarnings("CodeBlock2Expr")
@@ -187,6 +229,7 @@ public class WebRtcCallView extends InsetAwareConstraintLayout {
     footerGradient                = findViewById(R.id.call_screen_footer_gradient);
     startCallControls             = findViewById(R.id.call_screen_start_call_controls);
     callParticipantsPager         = findViewById(R.id.call_screen_participants_pager);
+
     callParticipantsRecycler      = findViewById(R.id.call_screen_participants_recycler);
     largeHeader                   = findViewById(R.id.call_screen_header);
     startCall                     = findViewById(R.id.call_screen_start_call_start_call);

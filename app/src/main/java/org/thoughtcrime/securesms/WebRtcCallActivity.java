@@ -115,6 +115,7 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 import static org.thoughtcrime.securesms.components.sensors.Orientation.PORTRAIT_BOTTOM_EDGE;
 
+//====đây là Web Real-Time Communication ACTIVITY class=========//
 public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChangeDialog.Callback, ReactWithAnyEmojiBottomSheetDialogFragment.Callback {
 
   private static final String TAG = Log.tag(WebRtcCallActivity.class);
@@ -191,6 +192,8 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
     }
 
     requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+    //this is layout webrtc_call_activity.xml
     setContentView(R.layout.webrtc_call_activity);
 
     fullscreenHelper = new FullscreenHelper(this);

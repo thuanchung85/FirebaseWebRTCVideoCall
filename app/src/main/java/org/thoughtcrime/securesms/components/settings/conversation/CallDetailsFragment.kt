@@ -454,11 +454,11 @@ class CallDetailsFragment : DSLSettingsFragment(
           onAudioClick = {
             Log.d("CHUNG", "CallDetailsFragment -> onAudioClick  START CALL VIEW OF PLAYGROUND HERE")
             //xây code view riêng cua PLAYGROUND tại đây
-            val intent: Intent = Intent(requireActivity(), PLAYGROUND_Activity::class.java)
-            startActivity(intent)
+            //val intent: Intent = Intent(requireActivity(), PLAYGROUND_Activity::class.java)
+            //startActivity(intent)
 
             //tạm thời stop code nguyên bản CommunicationActions.startVoiceCall
-            //CommunicationActions.startVoiceCall(requireActivity(), state.recipient)
+            CommunicationActions.startVoiceCall(requireActivity(), state.recipient)
           },
           onMuteClick = {
             if (!state.buttonStripState.isMuted) {

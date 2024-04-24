@@ -22,6 +22,7 @@
         tools:layout_constraintGuide_end="200dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="gone"
         android:id="@+id/call_screen_participants_parent"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -31,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.viewpager2.widget.ViewPager2
+            android:visibility="gone"
             android:id="@+id/call_screen_participants_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -46,7 +48,7 @@
         android:id="@+id/call_screen_large_local_renderer_frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/black"
+        android:background="@color/green_700"
         app:layout_constraintBottom_toTopOf="@id/fold_top_guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +81,35 @@
 
     </FrameLayout>
 
+
+    <!--=========CHUNG LIST VIEW ==================-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/green_100"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/call_screen_participants_recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="90dp"
+        app:layout_constraintVertical_bias="0.1">
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/PG_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <!--=========CHUNG LIST VIEW ==================-->
+
+
+
     <View
+        android:visibility="gone"
         android:id="@+id/call_screen_full_shade"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -96,6 +126,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
         <org.thoughtcrime.securesms.components.recyclerview.NoTouchingRecyclerView
+            android:visibility="gone"
             android:id="@+id/call_screen_reactions_feed"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -130,6 +161,7 @@
             app:layout_constraintGuide_end="0dp" />
 
         <View
+            android:visibility="gone"
             android:id="@+id/call_screen_header_gradient"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -325,6 +357,7 @@
             tools:visibility="gone" />
 
         <org.thoughtcrime.securesms.stories.viewer.reply.reaction.MultiReactionBurstLayout
+           android:visibility="gone"
             android:id="@+id/call_screen_reactions_container"
             android:layout_width="0dp"
             android:layout_height="0dp"

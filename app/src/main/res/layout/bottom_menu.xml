@@ -10,7 +10,7 @@
     <!--container-->
 
     <View
-       android:background="@color/red_500"
+
         android:id="@+id/calls_tab_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:background="@color/green_100"
+
         android:id="@+id/chats_tab_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -32,7 +32,7 @@
 
 
     <View
-        android:background="@color/blue_400"
+
         android:id="@+id/stories_tab_container"
         android:layout_width="0dp"
         android:layout_height="0dp"

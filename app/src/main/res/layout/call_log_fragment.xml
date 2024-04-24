@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_600"
+
     >
 
     <com.google.android.material.appbar.AppBarLayout
@@ -37,7 +37,7 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_300"
+
         android:clipToPadding="false"
         android:paddingBottom="80dp"
         android:scrollbars="vertical"
@@ -105,7 +105,7 @@
             android:focusable="true"
             android:theme="@style/Widget.Material3.FloatingActionButton.Secondary"
             android:transitionName="new_convo_fab"
-            app:backgroundTint="@color/yellow_500"
+            app:backgroundTint="@color/blue_400"
             app:shapeAppearanceOverlay="@style/Signal.ShapeOverlay.Rounded.Fab"
             app:srcCompat="@drawable/symbol_phone_plus_24"
             app:tint="@color/signal_colorOnSurface" />

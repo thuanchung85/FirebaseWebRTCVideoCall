@@ -9,7 +9,7 @@ public class myMessage {
   String txt = "String";
   int isMy = 0;
 
-  myMessage(String txt, int isMy){
+  public myMessage(String txt, int isMy){
     this.txt = txt;
     this.isMy = isMy;
 

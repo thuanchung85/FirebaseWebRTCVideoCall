@@ -246,7 +246,7 @@
     <string name="CommunicationActions_no_browser_found">Không tìm thấy trình duyệt.</string>
     <string name="CommunicationActions_send_email">Gửi email</string>
     <string name="CommunicationActions_a_cellular_call_is_already_in_progress">Một cuộc gọi di động đã được tiến hành.</string>
-    <string name="CommunicationActions_start_voice_call">Bắt đầu cuộc gọi thoại?</string>
+    <string name="CommunicationActions_start_voice_call">Bắt đầu cuộc gọi thoại tới</string>
     <string name="CommunicationActions_cancel">Hủy</string>
     <string name="CommunicationActions_call">Gọi</string>
     <string name="CommunicationActions_insecure_call">Cuộc gọi không bảo mật</string>

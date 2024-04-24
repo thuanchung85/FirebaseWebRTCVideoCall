@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <View
-        android:backgroundTint="@color/green_50"
+
         android:id="@+id/toolbar_background"
         android:layout_width="match_parent"
         android:layout_height="@dimen/signal_m3_toolbar_height"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:text="ari-talk"
-                android:textSize="25dp"
+                android:textSize="28dp"
                 android:textColor="@color/blue_600"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/Signal.Text.TitleLarge"
@@ -163,7 +163,7 @@
         app:constraint_referenced_ids="toolbar,toolbar_basic,toolbar_background" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:background="@color/cardview_dark_background"
+
         android:id="@+id/fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
