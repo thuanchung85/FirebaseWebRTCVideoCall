@@ -39,6 +39,7 @@ import org.thoughtcrime.securesms.AvatarPreviewActivity
 import org.thoughtcrime.securesms.BlockUnblockDialog
 import org.thoughtcrime.securesms.InviteActivity
 import org.thoughtcrime.securesms.MuteDialog
+import org.thoughtcrime.securesms.PLAYGROUND.PLAYGROUND_Activity
 import org.thoughtcrime.securesms.PushContactSelectionActivity
 import org.thoughtcrime.securesms.R
 import org.thoughtcrime.securesms.badges.BadgeImageView
@@ -451,7 +452,13 @@ class CallDetailsFragment : DSLSettingsFragment(
             }
           },
           onAudioClick = {
-            CommunicationActions.startVoiceCall(requireActivity(), state.recipient)
+            Log.d("CHUNG", "CallDetailsFragment -> onAudioClick  START CALL VIEW OF PLAYGROUND HERE")
+            //xây code view riêng cua PLAYGROUND tại đây
+            val intent: Intent = Intent(requireActivity(), PLAYGROUND_Activity::class.java)
+            startActivity(intent)
+
+            //tạm thời stop code nguyên bản CommunicationActions.startVoiceCall
+            //CommunicationActions.startVoiceCall(requireActivity(), state.recipient)
           },
           onMuteClick = {
             if (!state.buttonStripState.isMuted) {

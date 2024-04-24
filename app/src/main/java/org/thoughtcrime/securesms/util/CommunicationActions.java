@@ -29,6 +29,7 @@ import org.signal.core.util.logging.Log;
 import org.signal.libsignal.usernames.BaseUsernameException;
 import org.signal.libsignal.usernames.Username;
 import org.signal.ringrtc.CallLinkRootKey;
+import org.thoughtcrime.securesms.PLAYGROUND.PLAYGROUND_Activity;
 import org.thoughtcrime.securesms.R;
 import org.thoughtcrime.securesms.WebRtcCallActivity;
 import org.thoughtcrime.securesms.calls.links.CallLinks;
@@ -80,10 +81,7 @@ public class CommunicationActions {
 
   private static void startVoiceCall(@NonNull CallContext callContext, @NonNull Recipient recipient) {
     if (TelephonyUtil.isAnyPstnLineBusy(callContext.getContext())) {
-      Toast.makeText(callContext.getContext(),
-                     R.string.CommunicationActions_a_cellular_call_is_already_in_progress,
-                     Toast.LENGTH_SHORT)
-           .show();
+      Toast.makeText(callContext.getContext(), R.string.CommunicationActions_a_cellular_call_is_already_in_progress, Toast.LENGTH_SHORT).show();
       return;
     }
 

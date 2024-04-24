@@ -13,13 +13,14 @@ import org.thoughtcrime.securesms.util.adapter.mapping.MappingAdapter
 import org.thoughtcrime.securesms.util.adapter.mapping.MappingViewHolder
 import org.thoughtcrime.securesms.util.visible
 //file này control hàng button trong call details fragment
+//có 6 nút story, message, video , call, mute, search. trong file  R.layout.call_details_button_strip
 /**
  * Renders a configurable strip of buttons
  */
 object ButtonStripPreference {
 
   fun register(adapter: MappingAdapter) {
-    adapter.registerFactory(Model::class.java, LayoutFactory(::ViewHolder, R.layout.conversation_settings_button_strip))
+    adapter.registerFactory(Model::class.java, LayoutFactory(::ViewHolder, R.layout.call_details_button_strip))
   }
 
   class Model(
@@ -106,7 +107,10 @@ object ButtonStripPreference {
 
       message.setOnClickListener { model.onMessageClick() }
       videoCall.setOnClickListener { model.onVideoClick() }
+
+      //set chức năng click cho nút CALL
       audioCall.setOnClickListener { model.onAudioClick() }
+
       mute.setOnClickListener { model.onMuteClick() }
       search.setOnClickListener { model.onSearchClick() }
       addToStory.setOnClickListener { model.onAddToStoryClick() }

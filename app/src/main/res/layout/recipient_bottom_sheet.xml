@@ -115,7 +115,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rbs_note_to_self_description">
 
-            <include layout="@layout/conversation_settings_button_strip" />
+            <include layout="@layout/call_details_button_strip" />
 
             <include layout="@layout/dsl_divider_item" />
 

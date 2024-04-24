@@ -357,6 +357,7 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
     if (viewModel.selectionStateSnapshot.isNotEmpty(binding.recycler.adapter!!.itemCount)) {
       viewModel.toggleSelected(callLogRow.id)
     } else if (!callLogRow.peer.isCallLink) {
+      //khởi tạo và call intent chạy 1 activity là CallDetailsActivity
       val intent = CallDetailsActivity.forCall(
         requireContext(),
         callLogRow.peer,
