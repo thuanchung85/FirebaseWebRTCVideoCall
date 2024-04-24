@@ -386,9 +386,15 @@ public class CommunicationActions {
   }
 
   private static void startCallInternal(@NonNull CallContext callContext, @NonNull Recipient recipient, boolean isVideo, boolean fromCallLink) {
-    Log.w("CHUNG", "CHUNG CommunicationActions -> startCallInternal");
-    if (isVideo) startVideoCallInternal(callContext, recipient, fromCallLink);
-    else         startAudioCallInternal(callContext, recipient);
+
+    if (isVideo) {
+      Log.w("CHUNG", "CHUNG CommunicationActions -> startCallInternal VIDEO");
+      startVideoCallInternal(callContext, recipient, fromCallLink);
+    }
+    else {
+      Log.w("CHUNG", "CHUNG CommunicationActions -> startCallInternal AUDIO");
+      startAudioCallInternal(callContext, recipient);
+    }
   }
 
   private static void startAudioCallInternal(@NonNull CallContext callContext, @NonNull Recipient recipient) {

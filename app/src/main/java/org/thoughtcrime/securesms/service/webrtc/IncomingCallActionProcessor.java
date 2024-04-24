@@ -35,6 +35,8 @@ import java.util.Objects;
 
 import static org.thoughtcrime.securesms.webrtc.CallNotificationBuilder.TYPE_INCOMING_RINGING;
 
+///BỘ XỮ LÝ TÁC VỤ NHẬN CUỘC GỌI ĐIỆN THOẠI CỦA NGƯỜI KHAC (INCOMING CALL)
+
 /**
  * Responsible for setting up and managing the start of an incoming 1:1 call. Transitioned
  * to from idle or pre-join and can either move to a connected state (user picks up) or
@@ -47,10 +49,14 @@ public class IncomingCallActionProcessor extends DeviceAwareActionProcessor {
   private final ActiveCallActionProcessorDelegate activeCallDelegate;
   private final CallSetupActionProcessorDelegate  callSetupDelegate;
 
-  public IncomingCallActionProcessor(@NonNull WebRtcInteractor webRtcInteractor) {
+  public IncomingCallActionProcessor(@NonNull WebRtcInteractor webRtcInteractor)
+  {
+
     super(webRtcInteractor, TAG);
     activeCallDelegate = new ActiveCallActionProcessorDelegate(webRtcInteractor, TAG);
     callSetupDelegate  = new CallSetupActionProcessorDelegate(webRtcInteractor, TAG);
+
+    Log.i("CHUNG", "CHUNG -> IncomingCallActionProcessor()");
   }
 
   @Override
@@ -65,7 +71,7 @@ public class IncomingCallActionProcessor extends DeviceAwareActionProcessor {
   {
     RemotePeer activePeer = currentState.getCallInfoState().requireActivePeer();
 
-    Log.i(TAG, "handleTurnServerUpdate(): call_id: " + activePeer.getCallId());
+    Log.i("CHUNG", "CHUNG handleTurnServerUpdate(): call_id: " + activePeer.getCallId());
 
     currentState = currentState.builder()
                                .changeCallSetupState(activePeer.getCallId())

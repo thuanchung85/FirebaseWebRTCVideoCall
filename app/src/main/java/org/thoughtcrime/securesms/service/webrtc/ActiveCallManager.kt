@@ -28,6 +28,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import org.signal.core.util.PendingIntentFlags
 import org.signal.core.util.ThreadUtil
 import org.signal.core.util.logging.Log
+import org.signal.core.util.logging.Log.d
 import org.thoughtcrime.securesms.dependencies.ApplicationDependencies
 import org.thoughtcrime.securesms.jobs.UnableToStartException
 import org.thoughtcrime.securesms.recipients.Recipient
@@ -113,6 +114,7 @@ class ActiveCallManager(
 
     @JvmStatic
     fun sendAudioManagerCommand(context: Context, command: AudioManagerCommand) {
+      Log.d("CHUNG", "CHUNG ->ActiveCallManager -> sendAudioManagerCommand: " + command.javaClass.simpleName)
       activeCallManagerLock.withLock {
         if (activeCallManager == null) {
           activeCallManager = ActiveCallManager(context)

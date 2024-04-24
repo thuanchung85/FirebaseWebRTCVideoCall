@@ -177,7 +177,7 @@ public class WebRtcCallView extends InsetAwareConstraintLayout
     inflate(context, R.layout.webrtc_call_view, this);
     Log.e("CHUNG", " CHUNG -> WebRtcCallView inflate. -> R.layout.webrtc_call_view");
 
-    //tạo recyle view cua minh
+    //=======tạo recyle view cua minh========//
     messageList = new ArrayList<>();
     messageList.add(new myMessage("Hello, this is a test message.", 1));
     messageList.add(new myMessage("This is another test message.", 0));
@@ -197,7 +197,7 @@ public class WebRtcCallView extends InsetAwareConstraintLayout
     recyclerView.setNestedScrollingEnabled(false);
     recyclerView.setAdapter(chatAdapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
+    //=======tạo recyle view cua minh========//
 
   }
 
@@ -290,6 +290,7 @@ public class WebRtcCallView extends InsetAwareConstraintLayout
     incomingCallViews.add(incomingRingStatus);
 
     audioToggle.setOnAudioOutputChangedListener(webRtcAudioDevice -> {
+      Log.d("CHUNG", "CHUNG onAudioOutputChanged31: " + audioToggle);
       runIfNonNull(controlsListener, listener ->
       {
         if (Build.VERSION.SDK_INT >= 31) {
@@ -305,14 +306,17 @@ public class WebRtcCallView extends InsetAwareConstraintLayout
     });
 
     videoToggle.setOnCheckedChangeListener((v, isOn) -> {
+      Log.d("CHUNG", "CHUNG onVideoChanged: " + videoToggle);
       runIfNonNull(controlsListener, listener -> listener.onVideoChanged(isOn));
     });
 
     micToggle.setOnCheckedChangeListener((v, isOn) -> {
+      Log.d("CHUNG", "CHUNG onMicChanged: " + micToggle);
       runIfNonNull(controlsListener, listener -> listener.onMicChanged(isOn));
     });
 
     ringToggle.setOnCheckedChangeListener((v, isOn) -> {
+      Log.d("CHUNG", "CHUNG onRingGroupChanged: " + ringToggle);
       runIfNonNull(controlsListener, listener -> listener.onRingGroupChanged(isOn, ringToggle.isActivated()));
     });
 
@@ -320,6 +324,7 @@ public class WebRtcCallView extends InsetAwareConstraintLayout
     smallLocalRender.findViewById(R.id.call_participant_switch_camera).setOnClickListener(v -> runIfNonNull(controlsListener, ControlsListener::onCameraDirectionChanged));
 
     overflow.setOnClickListener(v -> {
+      Log.d("CHUNG", "CHUNG ControlsListener: " + overflow);
       runIfNonNull(controlsListener, ControlsListener::onOverflowClicked);
     });
 
@@ -344,7 +349,9 @@ public class WebRtcCallView extends InsetAwareConstraintLayout
     ViewUtil.setBottomMargin(smallLocalAudioIndicator, audioIndicatorMargin);
 
     startCall.setOnClickListener(v -> {
+
       if (controlsListener != null) {
+        Log.d("CHUNG", "CHUNG WebRtcCallView ->startCall.setOnClickListener -> Starting call.");
         startCall.setEnabled(false);
         controlsListener.onStartCall(videoToggle.isChecked());
       }

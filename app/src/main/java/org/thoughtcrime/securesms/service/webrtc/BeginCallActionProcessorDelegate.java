@@ -81,7 +81,7 @@ public class BeginCallActionProcessorDelegate extends WebRtcActionProcessor {
 
     webRtcInteractor.setCallInProgressNotification(TYPE_INCOMING_CONNECTING, remotePeer, isRemoteVideoOffer);
     webRtcInteractor.retrieveTurnServers(remotePeer);
-    webRtcInteractor.initializeAudioForCall();
+    webRtcInteractor.initializeAudioForCall("BeginCallActionProcessorDelegate -> handleStartIncomingCall");
 
     if (!webRtcInteractor.addNewIncomingCall(remotePeer.getId(), remotePeer.getCallId().longValue(), offerType == OfferMessage.Type.VIDEO_CALL)) {
       Log.i(tag, "Unable to add new incoming call");

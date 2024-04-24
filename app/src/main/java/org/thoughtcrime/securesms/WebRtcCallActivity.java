@@ -241,6 +241,7 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
 
   @Override
   protected void onStart() {
+    Log.i("CHUNG", " CHUNG WebRtcCallActivity onStart()");
     super.onStart();
 
     ephemeralStateDisposable = ApplicationDependencies.getSignalCallManager()
@@ -251,27 +252,30 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
 
   @Override
   public void onResume() {
-    Log.i(TAG, "onResume()");
+    Log.i("CHUNG", " CHUNG WebRtcCallActivity onResume()");
     super.onResume();
     initializeScreenshotSecurity();
 
     if (!EventBus.getDefault().isRegistered(this)) {
+      Log.w("CHUNG", "CHUNG  EventBus.getDefault().register(this)");
       EventBus.getDefault().register(this);
     }
 
     WebRtcViewModel rtcViewModel = EventBus.getDefault().getStickyEvent(WebRtcViewModel.class);
+
     if (rtcViewModel == null) {
-      Log.w(TAG, "Activity resumed without service event, perform delay destroy");
+      Log.w("CHUNG", "CHUNG Activity resumed without service event, perform delay destroy");
       ThreadUtil.runOnMainDelayed(() -> {
         WebRtcViewModel delayRtcViewModel = EventBus.getDefault().getStickyEvent(WebRtcViewModel.class);
         if (delayRtcViewModel == null) {
-          Log.w(TAG, "Activity still without service event, finishing activity");
+          Log.w("CHUNG", "CHUNG Activity still without service event, finishing activity");
           finish();
         } else {
-          Log.i(TAG, "Event found after delay");
+          Log.i("CHUNG", " CHUNG Event found after delay");
         }
       }, TimeUnit.SECONDS.toMillis(1));
     }
+    Log.d("CHUNG", "CHUNG  rtcViewModel OK " + rtcViewModel);
 
     if (enterPipOnResume) {
       enterPipOnResume = false;
@@ -281,7 +285,7 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
 
   @Override
   public void onNewIntent(Intent intent) {
-    Log.i(TAG, "onNewIntent(" + intent.getBooleanExtra(EXTRA_STARTED_FROM_FULLSCREEN, false) + ")");
+    Log.i("CHUNG", "CHUNG onNewIntent(" + intent.getBooleanExtra(EXTRA_STARTED_FROM_FULLSCREEN, false) + ")");
     super.onNewIntent(intent);
     logIntent(intent);
     processIntent(intent);
@@ -352,6 +356,7 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
   }
 
   private boolean enterPipModeIfPossible() {
+    Log.i("CHUNG", " CHUNG enterPipModeIfPossible");
     if (isSystemPipEnabledAndAvailable()) {
       if (viewModel.canEnterPipMode()) {
         try {
@@ -687,6 +692,7 @@ public class WebRtcCallActivity extends BaseActivity implements SafetyNumberChan
                .onAllGranted(() -> {
                  callScreen.setStatus(getString(R.string.RedPhone_answering));
 
+                 //=============CHU Y========///
                  ApplicationDependencies.getSignalCallManager().acceptCall(false);
                })
                .onAnyDenied(this::handleDenyCall)

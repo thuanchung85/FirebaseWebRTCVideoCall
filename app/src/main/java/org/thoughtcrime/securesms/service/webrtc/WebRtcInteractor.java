@@ -6,6 +6,7 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.signal.core.util.logging.Log;
 import org.signal.ringrtc.CallId;
 import org.signal.ringrtc.CallManager;
 import org.signal.ringrtc.GroupCall;
@@ -138,7 +139,8 @@ public class WebRtcInteractor {
     ActiveCallManager.sendAudioManagerCommand(context, new AudioManagerCommand.SilenceIncomingRinger());
   }
 
-  void initializeAudioForCall() {
+  void initializeAudioForCall(String lydo) {
+    Log.d("CHUNG", "CHUNG -><<<<<< initializeAudioForCall>>>>>>>>> lydo: " + lydo);
     ActiveCallManager.sendAudioManagerCommand(context, new AudioManagerCommand.Initialize());
   }
 

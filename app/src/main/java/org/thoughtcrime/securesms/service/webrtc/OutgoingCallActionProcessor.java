@@ -36,6 +36,8 @@ import java.util.Objects;
 
 import static org.thoughtcrime.securesms.webrtc.CallNotificationBuilder.TYPE_OUTGOING_RINGING;
 
+///BỘ XỮ LÝ TÁC VỤ GỌI ĐIỆN CHO NGƯỜI KHAC (OUTGOING CALL)
+
 /**
  * Responsible for setting up and managing the start of an outgoing 1:1 call. Transitioned
  * to from idle or pre-join and can either move to a connected state (callee picks up) or
@@ -52,6 +54,8 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
     super(webRtcInteractor, TAG);
     activeCallDelegate = new ActiveCallActionProcessorDelegate(webRtcInteractor, TAG);
     callSetupDelegate  = new CallSetupActionProcessorDelegate(webRtcInteractor, TAG);
+
+    Log.i("CHUNG", "CHUNG -> MAKED OutgoingCallActionProcessor() SUCCESS");
   }
 
   @Override
@@ -61,12 +65,12 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
 
   @Override
   protected @NonNull WebRtcServiceState handleStartOutgoingCall(@NonNull WebRtcServiceState currentState, @NonNull RemotePeer remotePeer, @NonNull OfferMessage.Type offerType) {
-    Log.i(TAG, "handleStartOutgoingCall():");
+    Log.i("CHUNG", " CHUNG -> handleStartOutgoingCall():");
     WebRtcServiceStateBuilder builder = currentState.builder();
 
     remotePeer.dialing();
 
-    Log.i(TAG, "assign activePeer callId: " + remotePeer.getCallId() + " key: " + remotePeer.hashCode() + " type: " + offerType);
+    Log.i("CHUNG", "CHUNG assign activePeer CALLID: " + remotePeer.getCallId() + " key: " + remotePeer.hashCode() + " type: " + offerType);
 
     boolean isVideoCall = offerType == OfferMessage.Type.VIDEO_CALL;
 
@@ -75,11 +79,15 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
                                            isVideoCall ? SignalAudioManager.AudioDevice.SPEAKER_PHONE : SignalAudioManager.AudioDevice.EARPIECE,
                                            false);
     webRtcInteractor.updatePhoneState(WebRtcUtil.getInCallPhoneState(context));
-    webRtcInteractor.initializeAudioForCall();
+
+    //=====KHỞI TẠO AUDIO CHO VIỆC CALL=======//
+    webRtcInteractor.initializeAudioForCall("OutgoingCallActionProcessor -> handleStartOutgoingCall");
+
+    //=====KHỞI TẠO CHUÔNG REO BẮN QUA CHO MÁY BÊN KIA BIẾT CO NGƯỜI ĐANG GỌI HỌ========//
     webRtcInteractor.startOutgoingRinger();
 
     if (!webRtcInteractor.addNewOutgoingCall(remotePeer.getId(), remotePeer.getCallId().longValue(), isVideoCall)) {
-      Log.i(TAG, "Unable to add new outgoing call");
+      Log.i("CHUNG" , "CHUNG Unable to add new outgoing call");
       return handleDropCall(currentState, remotePeer.getCallId().longValue());
     }
 
@@ -116,7 +124,7 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
   {
     RemotePeer activePeer = currentState.getCallInfoState().requireActivePeer();
 
-    Log.i(TAG, "handleTurnServerUpdate(): call_id: " + activePeer.getCallId());
+    Log.i("CHUNG ", "CHUNG handleTurnServerUpdate(): call_id: " + activePeer.getCallId());
 
     currentState = currentState.builder()
                                .changeCallSetupState(activePeer.getCallId())
@@ -137,7 +145,7 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
     CallSetupState  callSetupState  = currentState.getCallSetupState(activePeer);
 
     if (callSetupState.getIceServers().isEmpty() || (callSetupState.shouldWaitForTelecomApproval() && !callSetupState.isTelecomApproved())) {
-      Log.i(TAG, "Unable to proceed without ice server and telecom approval" +
+      Log.i("CHUNG", "CHUNG Unable to proceed without ice server and telecom approval" +
                  " iceServers: " + Util.hasItems(callSetupState.getIceServers()) +
                  " waitForTelecom: " + callSetupState.shouldWaitForTelecomApproval() +
                  " telecomApproved: " + callSetupState.isTelecomApproved());
@@ -177,7 +185,7 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
 
   @Override
   protected @NonNull WebRtcServiceState handleRemoteRinging(@NonNull WebRtcServiceState currentState, @NonNull RemotePeer remotePeer) {
-    Log.i(TAG, "handleRemoteRinging(): call_id: " + remotePeer.getCallId());
+    Log.i("CHUNG", "CHUNG handleRemoteRinging(): call_id: " + remotePeer.getCallId());
 
     currentState.getCallInfoState().requireActivePeer().remoteRinging();
     return currentState.builder()
@@ -192,7 +200,7 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
                                                              @NonNull WebRtcData.AnswerMetadata answerMetadata,
                                                              @NonNull WebRtcData.ReceivedAnswerMetadata receivedAnswerMetadata)
   {
-    Log.i(TAG, "handleReceivedAnswer(): id: " + callMetadata.getCallId().format(callMetadata.getRemoteDevice()));
+    Log.i("CHUNG ", "CHUNG handleReceivedAnswer(): id: " + callMetadata.getCallId().format(callMetadata.getRemoteDevice()));
 
     if (answerMetadata.getOpaque() == null) {
       return callFailure(currentState, "receivedAnswer() failed: answerMetadata did not contain opaque", null);
@@ -203,7 +211,9 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
       byte[] localIdentityKey  = WebRtcUtil.getPublicKeyBytes(SignalStore.account().getAciIdentityKey().getPublicKey().serialize());
 
       webRtcInteractor.getCallManager().receivedAnswer(callMetadata.getCallId(), callMetadata.getRemoteDevice(), answerMetadata.getOpaque(), remoteIdentityKey, localIdentityKey);
-    } catch (CallException | InvalidKeyException e) {
+    }
+    catch (CallException | InvalidKeyException e)
+    {
       return callFailure(currentState, "receivedAnswer() failed: ", e);
     }
 
@@ -212,7 +222,7 @@ public class OutgoingCallActionProcessor extends DeviceAwareActionProcessor {
 
   @Override
   protected @NonNull WebRtcServiceState handleReceivedBusy(@NonNull WebRtcServiceState currentState, @NonNull CallMetadata callMetadata) {
-    Log.i(TAG, "handleReceivedBusy(): id: " + callMetadata.getCallId().format(callMetadata.getRemoteDevice()));
+    Log.i("CHUNG", "CHUNG handleReceivedBusy(): id: " + callMetadata.getCallId().format(callMetadata.getRemoteDevice()));
 
     try {
       webRtcInteractor.getCallManager().receivedBusy(callMetadata.getCallId(), callMetadata.getRemoteDevice());

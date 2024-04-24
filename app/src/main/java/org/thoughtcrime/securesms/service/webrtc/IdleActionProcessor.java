@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.service.webrtc.state.WebRtcServiceState;
 import org.thoughtcrime.securesms.util.FeatureFlags;
 import org.whispersystems.signalservice.api.messages.calls.OfferMessage;
 import org.whispersystems.signalservice.api.push.ServiceId.ACI;
-
+//nhận cuoc goi
 /**
  * Action handler for when the system is at rest. Mainly responsible
  * for starting pre-call state, starting an outgoing call, or receiving an

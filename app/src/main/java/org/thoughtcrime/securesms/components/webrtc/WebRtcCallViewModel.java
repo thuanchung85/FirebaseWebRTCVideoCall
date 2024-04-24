@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.components.webrtc;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.util.Pair;
 
 import androidx.annotation.MainThread;
@@ -525,6 +526,7 @@ public class WebRtcCallViewModel extends ViewModel {
   }
 
   public void startCall(boolean isVideoCall) {
+    Log.d("CHUNG", " CHUNG WebRtcCallViewModel -> startCall: " + isVideoCall);
     callStarting = true;
     Recipient recipient = getRecipient().get();
     if (recipient.isGroup()) {

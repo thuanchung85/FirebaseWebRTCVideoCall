@@ -120,7 +120,7 @@ public final class IncomingGroupCallActionProcessor extends DeviceAwareActionPro
     currentState = WebRtcVideoUtil.initializeVideo(context, webRtcInteractor.getCameraEventListener(), currentState, RemotePeer.GROUP_CALL_ID.longValue());
 
     webRtcInteractor.setCallInProgressNotification(TYPE_INCOMING_RINGING, remotePeerGroup, true);
-    webRtcInteractor.initializeAudioForCall();
+    webRtcInteractor.initializeAudioForCall("IncomingGroupCallActionProcessor -> handleGroupCallRingUpdate -> handleGroupCallRingUpdate");
 
     boolean shouldDisturbUserWithCall = DoNotDisturbUtil.shouldDisturbUserWithCall(context.getApplicationContext());
     if (shouldDisturbUserWithCall) {
@@ -210,7 +210,7 @@ public final class IncomingGroupCallActionProcessor extends DeviceAwareActionPro
 
     webRtcInteractor.setCallInProgressNotification(TYPE_INCOMING_CONNECTING, currentState.getCallInfoState().getCallRecipient(), true);
     webRtcInteractor.updatePhoneState(WebRtcUtil.getInCallPhoneState(context));
-    webRtcInteractor.initializeAudioForCall();
+    webRtcInteractor.initializeAudioForCall("IncomingGroupCallActionProcessor -> handleAcceptCall");
 
     try {
       groupCall.setOutgoingVideoSource(currentState.getVideoState().requireLocalSink(), currentState.getVideoState().requireCamera());

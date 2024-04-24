@@ -262,6 +262,7 @@ public final class SignalCallManager implements CallManager.Observer, GroupCall.
   }
 
   public void acceptCall(boolean answerWithVideo) {
+    Log.i("CHUNG", "CHUNG SignalCallManager -> acceptCall");
     process((s, p) -> p.handleAcceptCall(s, answerWithVideo));
   }
 

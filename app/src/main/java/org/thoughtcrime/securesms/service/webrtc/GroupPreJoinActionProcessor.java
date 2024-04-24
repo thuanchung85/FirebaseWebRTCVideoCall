@@ -153,7 +153,7 @@ public class GroupPreJoinActionProcessor extends GroupActionProcessor {
                                                            @NonNull RemotePeer remotePeer,
                                                            @NonNull OfferMessage.Type offerType)
   {
-    Log.i(tag, "handleOutgoingCall():");
+    Log.i("CHUNG", "CHUNG handleOutgoingCall():");
 
     GroupCall groupCall = currentState.getCallInfoState().requireGroupCall();
 
@@ -161,7 +161,7 @@ public class GroupPreJoinActionProcessor extends GroupActionProcessor {
 
     webRtcInteractor.setCallInProgressNotification(TYPE_OUTGOING_RINGING, currentState.getCallInfoState().getCallRecipient(), true);
     webRtcInteractor.updatePhoneState(WebRtcUtil.getInCallPhoneState(context));
-    webRtcInteractor.initializeAudioForCall();
+    webRtcInteractor.initializeAudioForCall("GroupPreJoinActionProcessor  -> handleOutgoingCall");
 
     try {
       groupCall.setOutgoingVideoSource(currentState.getVideoState().requireLocalSink(), currentState.getVideoState().requireCamera());
