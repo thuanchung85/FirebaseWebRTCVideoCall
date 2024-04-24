@@ -110,12 +110,13 @@ private const val REQUEST_CODE_ADD_CONTACT = 2
 private const val REQUEST_CODE_ADD_MEMBERS_TO_GROUP = 3
 private const val REQUEST_CODE_RETURN_FROM_MEDIA = 4
 
-class ConversationSettingsFragment : DSLSettingsFragment(
+//this is class call Fragment after user tap on a friend in recyle view list at CallLogFragment
+class CallDetailsFragment : DSLSettingsFragment(
   layoutId = R.layout.conversation_settings_fragment,
   menuId = R.menu.conversation_settings
 ) {
 
-  private val args: ConversationSettingsFragmentArgs by navArgs()
+  private val args: CallDetailsFragmentArgs by navArgs()
   private val alertTint by lazy { ContextCompat.getColor(requireContext(), R.color.signal_alert_primary) }
   private val alertDisabledTint by lazy { ContextCompat.getColor(requireContext(), R.color.signal_alert_primary_50) }
   private val blockIcon by lazy {
@@ -170,9 +171,10 @@ class ConversationSettingsFragment : DSLSettingsFragment(
     toolbarAvatar = view.findViewById(R.id.toolbar_avatar)
     toolbarBadge = view.findViewById(R.id.toolbar_badge)
     toolbarTitle = view.findViewById(R.id.toolbar_title)
+    toolbarTitle.setText("CALL DETAILS")
     toolbarBackground = view.findViewById(R.id.toolbar_background)
 
-    val args: ConversationSettingsFragmentArgs = ConversationSettingsFragmentArgs.fromBundle(requireArguments())
+    val args: CallDetailsFragmentArgs = CallDetailsFragmentArgs.fromBundle(requireArguments())
     if (args.recipientId != null) {
       layoutManagerProducer = Badges::createLayoutManagerForGridWithBadges
     }
@@ -205,7 +207,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     return if (item.itemId == R.id.action_edit) {
-      val args = ConversationSettingsFragmentArgs.fromBundle(requireArguments())
+      val args = CallDetailsFragmentArgs.fromBundle(requireArguments())
       val groupId = args.groupId as ParcelableGroupId
 
       startActivity(CreateProfileActivity.getIntentForGroupProfile(requireActivity(), requireNotNull(ParcelableGroupId.get(groupId))))
@@ -229,7 +231,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
       // Intentionally left blank
     }
 
-    val args = ConversationSettingsFragmentArgs.fromBundle(requireArguments())
+    val args = CallDetailsFragmentArgs.fromBundle(requireArguments())
 
     BioTextPreference.register(adapter)
     AvatarPreference.register(adapter)
@@ -264,7 +266,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
         }
 
         state.withRecipientSettingsState {
-          toolbarTitle.text = if (state.recipient.isSelf) getString(R.string.note_to_self) else state.recipient.getDisplayName(requireContext())
+          toolbarTitle.text = if (state.recipient.isSelf) "call detail: " + getString(R.string.note_to_self) else "Call detail:" +state.recipient.getDisplayName(requireContext())
         }
 
         state.withGroupSettingsState {
@@ -395,7 +397,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
           InternalPreference.Model(
             recipient = state.recipient,
             onInternalDetailsClicked = {
-              val action = ConversationSettingsFragmentDirections.actionConversationSettingsFragmentToInternalDetailsSettingsFragment(state.recipient.id)
+              val action = CallDetailsFragmentDirections.actionConversationSettingsFragmentToInternalDetailsSettingsFragment(state.recipient.id)
               navController.safeNavigate(action)
             }
           )
@@ -421,7 +423,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
                 .setPositiveButton(android.R.string.ok) { d, _ -> d.dismiss() }
                 .show()
             } else {
-              Permissions.with(this@ConversationSettingsFragment)
+              Permissions.with(this@CallDetailsFragment)
                 .request(Manifest.permission.CAMERA)
                 .ifNecessary()
                 .withRationaleDialog(getString(R.string.ConversationActivity_to_capture_photos_and_video_allow_signal_access_to_the_camera), R.drawable.symbol_camera_24)
@@ -505,7 +507,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
           icon = DSLSettingsIcon.from(icon),
           isEnabled = enabled && !state.isDeprecatedOrUnregistered,
           onClick = {
-            val action = ConversationSettingsFragmentDirections.actionConversationSettingsFragmentToAppSettingsExpireTimer()
+            val action = CallDetailsFragmentDirections.actionConversationSettingsFragmentToAppSettingsExpireTimer()
               .setInitialValue(state.disappearingMessagesLifespan)
               .setRecipientId(state.recipient.id)
               .setForResultMode(false)
@@ -546,7 +548,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
           icon = DSLSettingsIcon.from(R.drawable.symbol_speaker_24),
           isEnabled = !state.isDeprecatedOrUnregistered,
           onClick = {
-            val action = ConversationSettingsFragmentDirections.actionConversationSettingsFragmentToSoundsAndNotificationsSettingsFragment(state.recipient.id)
+            val action = CallDetailsFragmentDirections.actionConversationSettingsFragmentToSoundsAndNotificationsSettingsFragment(state.recipient.id)
 
             navController.safeNavigate(action)
           }
@@ -753,7 +755,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
             icon = DSLSettingsIcon.from(R.drawable.ic_link_16),
             isEnabled = !state.isDeprecatedOrUnregistered,
             onClick = {
-              navController.safeNavigate(ConversationSettingsFragmentDirections.actionConversationSettingsFragmentToShareableGroupLinkFragment(groupState.groupId.requireV2().toString()))
+              navController.safeNavigate(CallDetailsFragmentDirections.actionConversationSettingsFragmentToShareableGroupLinkFragment(groupState.groupId.requireV2().toString()))
             }
           )
 
@@ -772,7 +774,7 @@ class ConversationSettingsFragment : DSLSettingsFragment(
               icon = DSLSettingsIcon.from(R.drawable.ic_lock_24),
               isEnabled = !state.isDeprecatedOrUnregistered,
               onClick = {
-                val action = ConversationSettingsFragmentDirections.actionConversationSettingsFragmentToPermissionsSettingsFragment(ParcelableGroupId.from(groupState.groupId))
+                val action = CallDetailsFragmentDirections.actionConversationSettingsFragmentToPermissionsSettingsFragment(ParcelableGroupId.from(groupState.groupId))
                 navController.safeNavigate(action)
               }
             )

@@ -18,7 +18,7 @@ import org.thoughtcrime.securesms.recipients.RecipientId
 import org.thoughtcrime.securesms.util.DynamicConversationSettingsTheme
 import org.thoughtcrime.securesms.util.DynamicTheme
 
-open class ConversationSettingsActivity : DSLSettingsActivity(), ConversationSettingsFragment.Callback {
+open class ConversationSettingsActivity : DSLSettingsActivity(), CallDetailsFragment.Callback {
 
   override val dynamicTheme: DynamicTheme = DynamicConversationSettingsTheme()
 
@@ -67,7 +67,7 @@ open class ConversationSettingsActivity : DSLSettingsActivity(), ConversationSet
 
     @JvmStatic
     fun forGroup(context: Context, groupId: GroupId): Intent {
-      val startBundle = ConversationSettingsFragmentArgs.Builder(null, ParcelableGroupId.from(groupId), null)
+      val startBundle = CallDetailsFragmentArgs.Builder(null, ParcelableGroupId.from(groupId), null)
         .build()
         .toBundle()
 
@@ -77,7 +77,7 @@ open class ConversationSettingsActivity : DSLSettingsActivity(), ConversationSet
 
     @JvmStatic
     fun forRecipient(context: Context, recipientId: RecipientId): Intent {
-      val startBundle = ConversationSettingsFragmentArgs.Builder(recipientId, null, null)
+      val startBundle = CallDetailsFragmentArgs.Builder(recipientId, null, null)
         .build()
         .toBundle()
 
@@ -88,9 +88,9 @@ open class ConversationSettingsActivity : DSLSettingsActivity(), ConversationSet
     @JvmStatic
     fun forCall(context: Context, callPeer: Recipient, callMessageIds: LongArray): Intent {
       val startBundleBuilder = if (callPeer.isGroup) {
-        ConversationSettingsFragmentArgs.Builder(null, ParcelableGroupId.from(callPeer.requireGroupId()), callMessageIds)
+        CallDetailsFragmentArgs.Builder(null, ParcelableGroupId.from(callPeer.requireGroupId()), callMessageIds)
       } else {
-        ConversationSettingsFragmentArgs.Builder(callPeer.id, null, callMessageIds)
+        CallDetailsFragmentArgs.Builder(callPeer.id, null, callMessageIds)
       }
 
       val startBundle = startBundleBuilder.build().toBundle()

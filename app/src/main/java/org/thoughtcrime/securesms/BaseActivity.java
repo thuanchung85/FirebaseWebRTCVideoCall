@@ -46,7 +46,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
   @Override
   protected void onStart() {
-    logEvent("onStart()");
+    logEvent("BaseActivity onStart()");
+    android.util.Log.w("CHUNG", "BaseActivity -> onStart -> registerActivity ");
     ApplicationDependencies.getShakeToReport().registerActivity(this);
     super.onStart();
   }

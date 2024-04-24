@@ -118,16 +118,30 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
 
 
     //đang ký lắng nghe bottomMenuViewModel coi khi nào có event thay đổi
+    // Whenever the state changes, the provided lambda function is invoked with the new state value.
     disposables += bottomMenuViewModel.state.subscribeBy { state ->
-      val controller: NavController = requireView().findViewById<View>(R.id.fragment_container).findNavController()
+      //This line is retrieving the NavController associated with the fragment container view.
+      //Get the root view for the fragment's layout (the one returned by onCreateView).
+      val frag = requireView().findViewById<View>(R.id.fragment_container)
+
+      val controller: NavController = frag.findNavController()
+
       //when user tap menu that will change controller.currentDestination?.id
       //khi controller.currentDestination?.id change thi load fragment tương ứng
       val fragmentCurrent = controller.currentDestination?.id
-      android.util.Log.d("CHUNG", "bottomMenuViewModel.state.subscribeBy >-> fragmentCurrent")
+      android.util.Log.d("CHUNG", "bottomMenuViewModel.state.subscribeBy >-> fragmentCurrent.id ${fragmentCurrent}")
       when (fragmentCurrent) {
+
+        //gọi navigation kich hoat action đi tới destination là CHATS
         R.id.conversationListFragment -> goToStateFromConversationList(state, controller)
+
+        //không làm gì cả
         R.id.conversationListArchiveFragment -> Unit
+
+        //gọi navigation kich hoat action đi tới destination là STORIES
         R.id.storiesLandingFragment -> goToStateFromStories(state, controller)
+
+        //gọi navigation kich hoat action đi tới destination là CALLS
         R.id.callLogFragment -> goToStateFromCalling(state, controller)
       }
     }
@@ -135,45 +149,44 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
 
   //đi tới conversationListFragment
   private fun goToStateFromConversationList(state: BottomMenuState, navController: NavController) {
-    android.util.Log.d("CHUNG", "goToStateFromConversationList >-> CHATS")
-    if (state.tab == BottomMenuEnum.CHATS) {
+    android.util.Log.d("CHUNG", "goToStateFromConversationList >-> CHATS state.tab ${state.tab}")
+    if (state.tab == BottomMenuEnum.CHATS)
+    {
       return
-    } else {
+    }
+    else
+    {
       val cameraFab = requireView().findViewById<View?>(R.id.camera_fab)
       val newConvoFab = requireView().findViewById<View?>(R.id.fab)
 
       val extras = when {
-        cameraFab != null && newConvoFab != null -> {
+        cameraFab != null && newConvoFab != null ->
+          {
           ViewCompat.setTransitionName(cameraFab, "camera_fab")
           ViewCompat.setTransitionName(newConvoFab, "new_convo_fab")
 
-          FragmentNavigatorExtras(
-            cameraFab to "camera_fab",
-            newConvoFab to "new_convo_fab"
-          )
+          FragmentNavigatorExtras(cameraFab to "camera_fab", newConvoFab to "new_convo_fab")
         }
 
         else -> null
       }
 
-      val destination = if (state.tab == BottomMenuEnum.STORIES) {
+      val destination = if (state.tab == BottomMenuEnum.STORIES)
+      {
         R.id.action_conversationListFragment_to_storiesLandingFragment
-      } else {
+      }
+      else
+      {
         R.id.action_conversationListFragment_to_callLogFragment
       }
 
-      navController.navigate(
-        destination,
-        null,
-        null,
-        extras
-      )
+      navController.navigate(destination, null, null, extras)
     }
   }
 
   //đi tới callLogFragment
   private fun goToStateFromCalling(state: BottomMenuState, navController: NavController) {
-    android.util.Log.d("CHUNG", "goToStateFromCalling >-> CALLS")
+    android.util.Log.d("CHUNG", "goToStateFromCalling >-> CALLS state.tab ${state.tab}")
     when (state.tab) {
       BottomMenuEnum.CALLS -> return
       BottomMenuEnum.CHATS -> navController.popBackStack(R.id.conversationListFragment, false)
@@ -183,7 +196,7 @@ class MainActivityListHostFragment : Fragment(R.layout.main_activity_list_host_f
 
   //đi tới storiesLandingFragment
   private fun goToStateFromStories(state: BottomMenuState, navController: NavController) {
-    android.util.Log.d("CHUNG", "goToStateFromStories >-> STORIES")
+    android.util.Log.d("CHUNG", "goToStateFromStories >-> STORIES state.tab ${state.tab}")
     when (state.tab) {
       BottomMenuEnum.STORIES -> return
       BottomMenuEnum.CHATS -> navController.popBackStack(R.id.conversationListFragment, false)

@@ -70,6 +70,7 @@ import org.thoughtcrime.securesms.util.visible
 import java.util.Objects
 import java.util.concurrent.TimeUnit
 
+//this is CALLS fragment of users call, it will host by MainActivityListHostFragment
 /**
  * Call Log tab.
  */
@@ -126,15 +127,19 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
 
     val callLogAdapter = CallLogAdapter(this)
     disposables.bindTo(viewLifecycleOwner, "CallLogFragment -> onViewCreated")
+
+
     callLogAdapter.setPagingController(viewModel.controller)
     callLogAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
       override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+        android.util.Log.w("CHUNG", "CallLogFragment -> callLogAdapter -> onItemRangeInserted  ${itemCount}")
         (requireActivity() as? MainActivity)?.onFirstRender()
         callLogAdapter.unregisterAdapterDataObserver(this)
       }
     })
 
     val scrollToPositionDelegate = ScrollToPositionDelegate(
+      //LẤY THAM CHIẾU TỚI recyclerView ID LÀ android:id="@+id/recycler"
       recyclerView = binding.recycler,
       canJumpToPosition = { callLogAdapter.isAvailableAround(it) }
     )
@@ -167,6 +172,8 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
 
     requireListener<Material3OnScrollHelperBinder>().bindScrollHelper(binding.recycler)
     binding.fab.setOnClickListener {
+      //KHI TAP VÀO nut call+ trôi nổi góc dưới màn hình
+      android.util.Log.w("CHUNG", "CallLogFragment ->  FAB.setOnClickListener")
       startActivity(NewCallActivity.createIntent(requireContext()))
     }
 

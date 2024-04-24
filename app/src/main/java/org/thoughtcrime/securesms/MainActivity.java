@@ -79,6 +79,9 @@ public class MainActivity extends PassphraseRequiredActivity implements VoiceNot
     super.onCreate(savedInstanceState, ready);
 
     // lấy file layout ra "main_activity" để áp dụng cho this MainActivity
+    //main activity chưa 2 thứ 1 cái host và 1 cái bottom menu
+    //host là 1 activity có chưa navigation ("MainActivityListHostFragment")
+    //bottom menu là 1 fragment thường
     setContentView(R.layout.main_activity);
 
     //cái android.R.id.content là của system hệ thống, nó không phải của res layout, thường dùng để lấy view  root view của activity

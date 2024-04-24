@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/conversationSettingsFragment"
-        android:name="org.thoughtcrime.securesms.components.settings.conversation.ConversationSettingsFragment"
+        android:name="org.thoughtcrime.securesms.components.settings.conversation.CallDetailsFragment"
         android:label="app_settings_fragment"
         tools:layout="@layout/dsl_settings_fragment">
 
