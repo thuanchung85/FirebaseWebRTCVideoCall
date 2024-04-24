@@ -189,11 +189,12 @@ class ActiveCallManager(
   }
 
   fun sendAudioCommand(audioCommand: AudioManagerCommand) {
+    Log.d("CHUNG","CHUNG -> activeCallManager -> sendAudioCommand")
     if (signalAudioManager == null) {
       signalAudioManager = create(application, this)
     }
 
-    Log.i(TAG, "Sending audio command [" + audioCommand.javaClass.simpleName + "] to " + signalAudioManager?.javaClass?.simpleName)
+    Log.i("CHUNG", "CHUNG ----> Sending audio command [" + audioCommand.javaClass.simpleName + "] to " + signalAudioManager?.javaClass?.simpleName)
     signalAudioManager!!.handleCommand(audioCommand)
   }
 
