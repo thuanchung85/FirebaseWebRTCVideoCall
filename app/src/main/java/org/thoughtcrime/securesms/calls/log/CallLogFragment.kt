@@ -44,7 +44,7 @@ import org.thoughtcrime.securesms.components.ViewBinderDelegate
 import org.thoughtcrime.securesms.components.menu.ActionItem
 import org.thoughtcrime.securesms.components.settings.app.AppSettingsActivity
 import org.thoughtcrime.securesms.components.settings.app.notifications.manual.NotificationProfileSelectionFragment
-import org.thoughtcrime.securesms.components.settings.conversation.ConversationSettingsActivity
+import org.thoughtcrime.securesms.components.settings.conversation.CallDetailsActivity
 import org.thoughtcrime.securesms.conversation.ConversationUpdateTick
 import org.thoughtcrime.securesms.conversation.SignalBottomActionBarController
 import org.thoughtcrime.securesms.conversation.v2.ConversationDialogs
@@ -357,7 +357,7 @@ class CallLogFragment : Fragment(R.layout.call_log_fragment), CallLogAdapter.Cal
     if (viewModel.selectionStateSnapshot.isNotEmpty(binding.recycler.adapter!!.itemCount)) {
       viewModel.toggleSelected(callLogRow.id)
     } else if (!callLogRow.peer.isCallLink) {
-      val intent = ConversationSettingsActivity.forCall(
+      val intent = CallDetailsActivity.forCall(
         requireContext(),
         callLogRow.peer,
         (callLogRow.id as CallLogRow.Id.Call).children.toLongArray()

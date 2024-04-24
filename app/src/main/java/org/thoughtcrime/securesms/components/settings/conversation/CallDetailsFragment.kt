@@ -9,6 +9,7 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -110,9 +111,9 @@ private const val REQUEST_CODE_ADD_CONTACT = 2
 private const val REQUEST_CODE_ADD_MEMBERS_TO_GROUP = 3
 private const val REQUEST_CODE_RETURN_FROM_MEDIA = 4
 
-//this is class call Fragment after user tap on a friend in recyle view list at CallLogFragment
+//this is class will make a call details Fragment after user tap on a friend in recyle view list at CallLogFragment
 class CallDetailsFragment : DSLSettingsFragment(
-  layoutId = R.layout.conversation_settings_fragment,
+  layoutId = R.layout.call_details_fragment,
   menuId = R.menu.conversation_settings
 ) {
 
@@ -166,6 +167,8 @@ class CallDetailsFragment : DSLSettingsFragment(
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    Log.w("CHUNG", "CallDetailsFragment -> onViewCreated  ")
+
     toolbar = view.findViewById(R.id.toolbar)
     toolbarAvatarContainer = view.findViewById(R.id.toolbar_avatar_container)
     toolbarAvatar = view.findViewById(R.id.toolbar_avatar)
@@ -235,7 +238,10 @@ class CallDetailsFragment : DSLSettingsFragment(
 
     BioTextPreference.register(adapter)
     AvatarPreference.register(adapter)
+
+    //khỡi tạo hàng nút  "tin nhắn" , "video", "Âm thanh", "tắt tiếng"
     ButtonStripPreference.register(adapter)
+
     LargeIconClickPreference.register(adapter)
     SharedMediaPreference.register(adapter)
     RecipientPreference.register(adapter)
@@ -284,7 +290,7 @@ class CallDetailsFragment : DSLSettingsFragment(
       }
     }
 
-    lifecycleDisposable.bindTo(viewLifecycleOwner, "ConversationSettingsFragment -> bindAdapter")
+    lifecycleDisposable.bindTo(viewLifecycleOwner, "CallDetailsFragment -> bindAdapter")
     lifecycleDisposable += viewModel.events.subscribe { event ->
       @Exhaustive
       when (event) {

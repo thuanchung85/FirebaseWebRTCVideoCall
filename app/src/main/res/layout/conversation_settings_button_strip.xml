@@ -76,6 +76,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:backgroundTint="@color/green_400"
                 android:id="@+id/start_video"
                 style="@style/Signal.Widget.ImageView.ActionButton"
                 android:contentDescription="@string/ConversationSettingsFragment__start_video_call"
@@ -100,6 +101,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:backgroundTint="@color/yellow_500"
                 android:id="@+id/start_audio"
                 style="@style/Signal.Widget.ImageView.ActionButton"
                 android:contentDescription="@string/ConversationSettingsFragment__start_audio_call"
@@ -124,6 +126,7 @@
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:backgroundTint="@color/red_100"
                 android:id="@+id/mute"
                 style="@style/Signal.Widget.ImageView.ActionButton"
                 android:contentDescription="@string/ConversationSettingsFragment__mute"

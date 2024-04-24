@@ -7,9 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
@@ -22,7 +20,7 @@ import org.signal.core.util.ThreadUtil;
 import org.signal.libsignal.protocol.util.Pair;
 import org.thoughtcrime.securesms.BlockUnblockDialog;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.settings.conversation.ConversationSettingsActivity;
+import org.thoughtcrime.securesms.components.settings.conversation.CallDetailsActivity;
 import org.thoughtcrime.securesms.database.GroupTable;
 import org.thoughtcrime.securesms.database.model.IdentityRecord;
 import org.thoughtcrime.securesms.database.model.StoryViewState;
@@ -188,7 +186,7 @@ final class RecipientDialogViewModel extends ViewModel {
 
   void onAvatarClicked(@NonNull Activity activity) {
     if (storyViewState.getValue() == null || storyViewState.getValue() == StoryViewState.NONE) {
-      activity.startActivity(ConversationSettingsActivity.forRecipient(activity, recipientDialogRepository.getRecipientId()));
+      activity.startActivity(CallDetailsActivity.forRecipient(activity, recipientDialogRepository.getRecipientId()));
     } else {
       activity.startActivity(StoryViewerActivity.createIntent(
           activity,

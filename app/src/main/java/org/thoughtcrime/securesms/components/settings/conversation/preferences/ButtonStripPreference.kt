@@ -12,7 +12,7 @@ import org.thoughtcrime.securesms.util.adapter.mapping.LayoutFactory
 import org.thoughtcrime.securesms.util.adapter.mapping.MappingAdapter
 import org.thoughtcrime.securesms.util.adapter.mapping.MappingViewHolder
 import org.thoughtcrime.securesms.util.visible
-
+//file này control hàng button trong call details fragment
 /**
  * Renders a configurable strip of buttons
  */
@@ -46,16 +46,26 @@ object ButtonStripPreference {
 
     private val addToStory: View = itemView.findViewById(R.id.add_to_story)
     private val addToStoryContainer: View = itemView.findViewById(R.id.button_strip_add_to_story_container)
+
+    //nut tin nhắn
     private val message: View = itemView.findViewById(R.id.message)
     private val messageContainer: View = itemView.findViewById(R.id.button_strip_message_container)
+
+    //nut video
     private val videoCall: View = itemView.findViewById(R.id.start_video)
     private val videoContainer: View = itemView.findViewById(R.id.button_strip_video_container)
+
+    //nút call
     private val audioCall: ImageView = itemView.findViewById(R.id.start_audio)
     private val audioLabel: TextView = itemView.findViewById(R.id.start_audio_label)
     private val audioContainer: View = itemView.findViewById(R.id.button_strip_audio_container)
+
+    //nut mute âm thanh
     private val mute: ImageView = itemView.findViewById(R.id.mute)
     private val muteLabel: TextView = itemView.findViewById(R.id.mute_label)
     private val muteContainer: View = itemView.findViewById(R.id.button_strip_mute_container)
+
+    //nut search
     private val search: View = itemView.findViewById(R.id.search)
     private val searchContainer: View = itemView.findViewById(R.id.button_strip_search_container)
 

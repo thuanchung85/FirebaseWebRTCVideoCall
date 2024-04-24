@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
@@ -18,11 +19,14 @@ import org.thoughtcrime.securesms.recipients.RecipientId
 import org.thoughtcrime.securesms.util.DynamicConversationSettingsTheme
 import org.thoughtcrime.securesms.util.DynamicTheme
 
-open class ConversationSettingsActivity : DSLSettingsActivity(), CallDetailsFragment.Callback {
+//this is class Activity of Call Details, it is host Fragment call details, and use navigation technology R.navigation.call_details
+//file call_details.xml là 1 navigation graph, this Call Details activity này dùng để navigate giữa các fragment
+open class CallDetailsActivity : DSLSettingsActivity(), CallDetailsFragment.Callback {
 
   override val dynamicTheme: DynamicTheme = DynamicConversationSettingsTheme()
 
   override fun onCreate(savedInstanceState: Bundle?, ready: Boolean) {
+    Log.w("CHUNG", "CallDetailsActivity -> onCreate  ")
     ActivityCompat.postponeEnterTransition(this)
     setExitSharedElementCallback(MaterialContainerTransformSharedElementCallback())
     super.onCreate(savedInstanceState, ready)
@@ -101,8 +105,8 @@ open class ConversationSettingsActivity : DSLSettingsActivity(), CallDetailsFrag
     }
 
     private fun getIntent(context: Context): Intent {
-      return Intent(context, ConversationSettingsActivity::class.java)
-        .putExtra(ARG_NAV_GRAPH, R.navigation.conversation_settings)
+      return Intent(context, CallDetailsActivity::class.java)
+        .putExtra(ARG_NAV_GRAPH, R.navigation.call_details)
     }
   }
 }

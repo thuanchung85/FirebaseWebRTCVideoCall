@@ -32,7 +32,7 @@ import com.bumptech.glide.request.transition.Transition;
 
 import org.signal.core.util.logging.Log;
 import org.thoughtcrime.securesms.R;
-import org.thoughtcrime.securesms.components.settings.conversation.ConversationSettingsActivity;
+import org.thoughtcrime.securesms.components.settings.conversation.CallDetailsActivity;
 import org.thoughtcrime.securesms.contacts.avatars.ContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.FallbackContactPhoto;
 import org.thoughtcrime.securesms.contacts.avatars.ProfileContactPhoto;
@@ -251,14 +251,14 @@ public final class AvatarImageView extends AppCompatImageView {
       super.setOnClickListener(v -> {
         Context context = getContext();
         if (recipient.isPushGroup()) {
-          context.startActivity(ConversationSettingsActivity.forGroup(context, recipient.requireGroupId().requirePush()),
-                                ConversationSettingsActivity.createTransitionBundle(context, this));
+          context.startActivity(CallDetailsActivity.forGroup(context, recipient.requireGroupId().requirePush()),
+                                CallDetailsActivity.createTransitionBundle(context, this));
         } else {
           if (context instanceof FragmentActivity) {
             RecipientBottomSheetDialogFragment.show(((FragmentActivity) context).getSupportFragmentManager(), recipient.getId(), null);
           } else {
-            context.startActivity(ConversationSettingsActivity.forRecipient(context, recipient.getId()),
-                                  ConversationSettingsActivity.createTransitionBundle(context, this));
+            context.startActivity(CallDetailsActivity.forRecipient(context, recipient.getId()),
+                                  CallDetailsActivity.createTransitionBundle(context, this));
           }
         }
       });

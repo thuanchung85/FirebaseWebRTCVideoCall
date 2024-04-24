@@ -10,7 +10,7 @@ import org.thoughtcrime.securesms.R
 import org.thoughtcrime.securesms.calls.links.details.CallLinkDetailsActivity
 import org.thoughtcrime.securesms.components.menu.ActionItem
 import org.thoughtcrime.securesms.components.menu.SignalContextMenu
-import org.thoughtcrime.securesms.components.settings.conversation.ConversationSettingsActivity
+import org.thoughtcrime.securesms.components.settings.conversation.CallDetailsActivity
 import org.thoughtcrime.securesms.conversation.ConversationIntents
 import org.thoughtcrime.securesms.database.CallTable
 import org.thoughtcrime.securesms.recipients.Recipient
@@ -111,7 +111,7 @@ class CallLogContextMenu(
     ) {
       val intent = when {
         peer.isCallLink -> CallLinkDetailsActivity.createIntent(fragment.requireContext(), peer.requireCallLinkRoomId())
-        else -> ConversationSettingsActivity.forCall(fragment.requireContext(), peer, messageIds)
+        else -> CallDetailsActivity.forCall(fragment.requireContext(), peer, messageIds)
       }
       fragment.startActivity(intent)
     }

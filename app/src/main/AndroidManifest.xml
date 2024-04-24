@@ -784,7 +784,7 @@
         android:exported="false"/>
 
     <activity
-        android:name=".components.settings.conversation.ConversationSettingsActivity"
+        android:name=".components.settings.conversation.CallDetailsActivity"
         android:configChanges="touchscreen|keyboard|keyboardHidden|screenLayout|screenSize"
         android:theme="@style/Signal.DayNight.ConversationSettings"
         android:windowSoftInputMode="stateAlwaysHidden"

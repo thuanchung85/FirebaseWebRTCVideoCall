@@ -126,7 +126,7 @@ import org.thoughtcrime.securesms.components.menu.ActionItem
 import org.thoughtcrime.securesms.components.menu.SignalBottomActionBar
 import org.thoughtcrime.securesms.components.settings.app.subscription.donate.DonateToSignalFragment
 import org.thoughtcrime.securesms.components.settings.app.subscription.donate.DonateToSignalType
-import org.thoughtcrime.securesms.components.settings.conversation.ConversationSettingsActivity
+import org.thoughtcrime.securesms.components.settings.conversation.CallDetailsActivity
 import org.thoughtcrime.securesms.components.spoiler.SpoilerAnnotation
 import org.thoughtcrime.securesms.components.voice.VoiceNoteDraft
 import org.thoughtcrime.securesms.components.voice.VoiceNoteMediaControllerOwner
@@ -3323,8 +3323,8 @@ class ConversationFragment :
 
     override fun handleManageGroup() {
       val recipient = viewModel.recipientSnapshot ?: return
-      val intent = ConversationSettingsActivity.forGroup(requireContext(), recipient.requireGroupId())
-      val bundle = ConversationSettingsActivity.createTransitionBundle(
+      val intent = CallDetailsActivity.forGroup(requireContext(), recipient.requireGroupId())
+      val bundle = CallDetailsActivity.createTransitionBundle(
         requireContext(),
         binding.conversationTitleView.root.findViewById(R.id.contact_photo_image),
         binding.toolbar
@@ -3374,8 +3374,8 @@ class ConversationFragment :
         return
       }
 
-      val intent = ConversationSettingsActivity.forRecipient(requireContext(), recipient.id)
-      val bundle = ConversationSettingsActivity.createTransitionBundle(
+      val intent = CallDetailsActivity.forRecipient(requireContext(), recipient.id)
+      val bundle = CallDetailsActivity.createTransitionBundle(
         requireActivity(),
         binding.conversationTitleView.root.findViewById(R.id.contact_photo_image),
         binding.toolbar
