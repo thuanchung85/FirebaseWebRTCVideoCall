@@ -77,7 +77,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:text="ari-talk"
+                android:text="ARI Talk"
                 android:textSize="28dp"
                 android:textColor="@color/blue_600"
                 android:textAlignment="viewStart"
