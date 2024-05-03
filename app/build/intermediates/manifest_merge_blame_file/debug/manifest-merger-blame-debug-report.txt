@@ -1,0 +1,232 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.codewithkael.firebasevideocall"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml
+10
+11    <uses-feature
+11-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:5:5-7:36
+12        android:name="android.hardware.camera"
+12-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:6:9-47
+13        android:required="false" />
+13-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:7:9-33
+14
+15    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+15-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:8:5-77
+15-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:8:22-74
+16    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+16-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:9:5-71
+16-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:9:22-68
+17    <uses-permission
+17-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:10:5-11:38
+18        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+18-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:10:22-78
+19        android:maxSdkVersion="32" />
+19-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:11:9-35
+20    <uses-permission
+20-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:12:5-13:38
+21        android:name="android.permission.READ_EXTERNAL_STORAGE"
+21-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:12:22-77
+22        android:maxSdkVersion="32" />
+22-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:13:9-35
+23    <uses-permission android:name="android.permission.INTERNET" />
+23-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:14:5-66
+23-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:14:22-64
+24    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+24-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:15:5-76
+24-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:15:22-74
+25    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+25-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:9:5-71
+25-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:9:22-68
+26    <uses-permission android:name="android.permission.CAMERA" />
+26-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:17:5-64
+26-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:17:22-62
+27    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+27-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:18:5-19:47
+27-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:18:22-76
+28    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+28-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:21:5-75
+28-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:21:22-73
+29    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+29-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:22:5-74
+29-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:22:22-72
+30    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+30-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:23:5-75
+30-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:23:22-72
+31    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+31-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:24:5-81
+31-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:24:22-79
+32
+33    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+34    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+35    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+35-->[com.google.firebase:firebase-database:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/8e49e7867dec15eb1ec65b279caabf62/transformed/firebase-database-20.2.2/AndroidManifest.xml:24:5-79
+35-->[com.google.firebase:firebase-database:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/8e49e7867dec15eb1ec65b279caabf62/transformed/firebase-database-20.2.2/AndroidManifest.xml:24:22-76
+36
+37    <permission
+37-->[androidx.core:core:1.9.0] /Users/luongthuanchung/.gradle/caches/transforms-3/de8d10f8acf82e227af30684640d971a/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+38        android:name="com.codewithkael.firebasevideocall.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+38-->[androidx.core:core:1.9.0] /Users/luongthuanchung/.gradle/caches/transforms-3/de8d10f8acf82e227af30684640d971a/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+39        android:protectionLevel="signature" />
+39-->[androidx.core:core:1.9.0] /Users/luongthuanchung/.gradle/caches/transforms-3/de8d10f8acf82e227af30684640d971a/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+40
+41    <uses-permission android:name="com.codewithkael.firebasevideocall.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+41-->[androidx.core:core:1.9.0] /Users/luongthuanchung/.gradle/caches/transforms-3/de8d10f8acf82e227af30684640d971a/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+41-->[androidx.core:core:1.9.0] /Users/luongthuanchung/.gradle/caches/transforms-3/de8d10f8acf82e227af30684640d971a/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+42
+43    <application
+43-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:26:5-54:19
+44        android:name="com.codewithkael.firebasevideocall.utils.MyApplication"
+44-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:32:9-44
+45        android:allowBackup="true"
+45-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:27:9-35
+46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+46-->[androidx.core:core:1.9.0] /Users/luongthuanchung/.gradle/caches/transforms-3/de8d10f8acf82e227af30684640d971a/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+47        android:dataExtractionRules="@xml/data_extraction_rules"
+47-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:28:9-65
+48        android:debuggable="true"
+49        android:extractNativeLibs="false"
+50        android:fullBackupContent="@xml/backup_rules"
+50-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:29:9-54
+51        android:icon="@drawable/webrtc_svgrepo_com"
+51-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:30:9-52
+52        android:label="@string/app_name"
+52-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:31:9-41
+53        android:supportsRtl="true"
+53-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:33:9-35
+54        android:testOnly="true"
+55        android:theme="@style/Theme.FirebaseVideoCall" >
+55-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:34:9-55
+56        <activity
+56-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:36:9-44:20
+57            android:name="com.codewithkael.firebasevideocall.ui.LoginActivity"
+57-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:37:13-45
+58            android:exported="true" >
+58-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:38:13-36
+59            <intent-filter>
+59-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:39:13-43:29
+60                <action android:name="android.intent.action.MAIN" />
+60-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:40:17-69
+60-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:40:25-66
+61
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:42:17-77
+62-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:42:27-74
+63            </intent-filter>
+64        </activity>
+65        <activity
+65-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:45:9-46:38
+66            android:name="com.codewithkael.firebasevideocall.ui.MainActivity"
+66-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:45:19-50
+67            android:exported="true" />
+67-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:46:13-36
+68        <activity
+68-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:47:9-48:38
+69            android:name="com.codewithkael.firebasevideocall.ui.CallActivity"
+69-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:47:19-50
+70            android:exported="true" />
+70-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:48:13-36
+71        <activity
+71-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:49:9-50:38
+72            android:name="com.codewithkael.firebasevideocall.ui.CloseActivity"
+72-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:49:19-51
+73            android:exported="true" />
+73-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:50:13-36
+74
+75        <receiver android:name="com.codewithkael.firebasevideocall.service.MainServiceReceiver" />
+75-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:51:9-64
+75-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:51:19-62
+76
+77        <service
+77-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:52:9-53:62
+78            android:name="com.codewithkael.firebasevideocall.service.MainService"
+78-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:52:18-53
+79            android:foregroundServiceType="mediaProjection" />
+79-->/Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/src/main/AndroidManifest.xml:53:13-60
+80        <service
+80-->[com.google.firebase:firebase-database-ktx:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/dc114c96aad290f204d8a70391d8f1cb/transformed/firebase-database-ktx-20.2.2/AndroidManifest.xml:11:9-17:19
+81            android:name="com.google.firebase.components.ComponentDiscoveryService"
+81-->[com.google.firebase:firebase-database-ktx:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/dc114c96aad290f204d8a70391d8f1cb/transformed/firebase-database-ktx-20.2.2/AndroidManifest.xml:12:13-84
+82            android:directBootAware="true"
+82-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:34:13-43
+83            android:exported="false" >
+83-->[com.google.firebase:firebase-database-ktx:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/dc114c96aad290f204d8a70391d8f1cb/transformed/firebase-database-ktx-20.2.2/AndroidManifest.xml:13:13-37
+84            <meta-data
+84-->[com.google.firebase:firebase-database-ktx:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/dc114c96aad290f204d8a70391d8f1cb/transformed/firebase-database-ktx-20.2.2/AndroidManifest.xml:14:13-16:85
+85                android:name="com.google.firebase.components:com.google.firebase.database.ktx.FirebaseDatabaseKtxRegistrar"
+85-->[com.google.firebase:firebase-database-ktx:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/dc114c96aad290f204d8a70391d8f1cb/transformed/firebase-database-ktx-20.2.2/AndroidManifest.xml:15:17-124
+86                android:value="com.google.firebase.components.ComponentRegistrar" />
+86-->[com.google.firebase:firebase-database-ktx:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/dc114c96aad290f204d8a70391d8f1cb/transformed/firebase-database-ktx-20.2.2/AndroidManifest.xml:16:17-82
+87            <meta-data
+87-->[com.google.firebase:firebase-common-ktx:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/a0143aa27bc1fa054b987a641cbae7dd/transformed/firebase-common-ktx-20.3.3/AndroidManifest.xml:14:13-16:85
+88                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+88-->[com.google.firebase:firebase-common-ktx:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/a0143aa27bc1fa054b987a641cbae7dd/transformed/firebase-common-ktx-20.3.3/AndroidManifest.xml:15:17-113
+89                android:value="com.google.firebase.components.ComponentRegistrar" />
+89-->[com.google.firebase:firebase-common-ktx:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/a0143aa27bc1fa054b987a641cbae7dd/transformed/firebase-common-ktx-20.3.3/AndroidManifest.xml:16:17-82
+90            <meta-data
+90-->[com.google.firebase:firebase-database:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/8e49e7867dec15eb1ec65b279caabf62/transformed/firebase-database-20.2.2/AndroidManifest.xml:31:13-33:85
+91                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+91-->[com.google.firebase:firebase-database:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/8e49e7867dec15eb1ec65b279caabf62/transformed/firebase-database-20.2.2/AndroidManifest.xml:32:17-109
+92                android:value="com.google.firebase.components.ComponentRegistrar" />
+92-->[com.google.firebase:firebase-database:20.2.2] /Users/luongthuanchung/.gradle/caches/transforms-3/8e49e7867dec15eb1ec65b279caabf62/transformed/firebase-database-20.2.2/AndroidManifest.xml:33:17-82
+93        </service>
+94
+95        <provider
+95-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:25:9-30:39
+96            android:name="com.google.firebase.provider.FirebaseInitProvider"
+96-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:26:13-77
+97            android:authorities="com.codewithkael.firebasevideocall.firebaseinitprovider"
+97-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:27:13-72
+98            android:directBootAware="true"
+98-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:28:13-43
+99            android:exported="false"
+99-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:29:13-37
+100            android:initOrder="100" />
+100-->[com.google.firebase:firebase-common:20.3.3] /Users/luongthuanchung/.gradle/caches/transforms-3/f89973ae9b8c26c4961fe1d9c4706992/transformed/firebase-common-20.3.3/AndroidManifest.xml:30:13-36
+101
+102        <activity
+102-->[com.google.android.gms:play-services-base:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/4fd08a310652c8e44667b65deba4ff8f/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+103            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+103-->[com.google.android.gms:play-services-base:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/4fd08a310652c8e44667b65deba4ff8f/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+104            android:exported="false"
+104-->[com.google.android.gms:play-services-base:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/4fd08a310652c8e44667b65deba4ff8f/transformed/play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+105            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+105-->[com.google.android.gms:play-services-base:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/4fd08a310652c8e44667b65deba4ff8f/transformed/play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+106
+107        <meta-data
+107-->[com.google.android.gms:play-services-basement:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/9df91354ddb93c1e3e0c024235b861f8/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+108            android:name="com.google.android.gms.version"
+108-->[com.google.android.gms:play-services-basement:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/9df91354ddb93c1e3e0c024235b861f8/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+109            android:value="@integer/google_play_services_version" />
+109-->[com.google.android.gms:play-services-basement:18.1.0] /Users/luongthuanchung/.gradle/caches/transforms-3/9df91354ddb93c1e3e0c024235b861f8/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+110
+111        <provider
+111-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+112            android:name="androidx.startup.InitializationProvider"
+112-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+113            android:authorities="com.codewithkael.firebasevideocall.androidx-startup"
+113-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+114            android:exported="false" >
+114-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+115            <meta-data
+115-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+116                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+116-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+117                android:value="androidx.startup" />
+117-->[androidx.emoji2:emoji2:1.2.0] /Users/luongthuanchung/.gradle/caches/transforms-3/cc92ed9812c7be5c7da379e3d7e1dff8/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+118            <meta-data
+118-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/luongthuanchung/.gradle/caches/transforms-3/f6c4377c0742d0a93cced47612294af5/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+119                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+119-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/luongthuanchung/.gradle/caches/transforms-3/f6c4377c0742d0a93cced47612294af5/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+120                android:value="androidx.startup" />
+120-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/luongthuanchung/.gradle/caches/transforms-3/f6c4377c0742d0a93cced47612294af5/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+121        </provider>
+122    </application>
+123
+124</manifest>

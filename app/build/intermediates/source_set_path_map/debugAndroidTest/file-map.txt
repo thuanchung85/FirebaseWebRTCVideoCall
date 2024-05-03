@@ -1,0 +1,7 @@
+com.codewithkael.firebasevideocall.test.app-annotation-experimental-1.3.0-0 /Users/luongthuanchung/.gradle/caches/transforms-3/a62187b53462002249d5c3d6d3a947ee/transformed/annotation-experimental-1.3.0/res
+com.codewithkael.firebasevideocall.test.app-core-1.5.0-1 /Users/luongthuanchung/.gradle/caches/transforms-3/b0717c66e7205c24a9f87f70946733e3/transformed/core-1.5.0/res
+com.codewithkael.firebasevideocall.test.app-androidTest-2 /Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/build/generated/res/resValues/androidTest/debug
+com.codewithkael.firebasevideocall.test.app-androidTest-3 /Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/build/generated/res/rs/androidTest/debug
+com.codewithkael.firebasevideocall.test.app-mergeDebugAndroidTestResources-4 /Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.codewithkael.firebasevideocall.test.app-mergeDebugAndroidTestResources-5 /Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.codewithkael.firebasevideocall.test.app-merged_res-6 /Users/luongthuanchung/AndroidStudioProjects/FirebaseWebRTCVideoCall/app/build/intermediates/merged_res/debugAndroidTest

@@ -1,0 +1,146 @@
+[
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_switch_camera.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_switch_camera.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/layout_item_main_recycler_view.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/layout/item_main_recycler_view.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/layout_activity_login.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-anydpi-v33/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_video_call.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_video_call.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_speaker.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_speaker.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_camera_on.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_camera_on.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_call.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_call.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_mic_off.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_mic_off.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_stop_screen_share.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_stop_screen_share.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_record.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_record.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_firebase.png.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/firebase.png"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_camera_off.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_camera_off.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_ear.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_ear.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_screen_share.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_screen_share.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_end_call.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_end_call.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/xml_backup_rules.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_webrtc_svgrepo_com.xml.flat",
+        "source": "com.codewithkael.firebasevideocall.app-main-36:/drawable/webrtc_svgrepo_com.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_mic_on.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_mic_on.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/layout_activity_call.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/layout/activity_call.xml"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-merged_res-34:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/luongthuanchung/.gradle/daemon/7.5/com.codewithkael.firebasevideocall.app-main-36:/drawable/ic_launcher_background.xml"
+    }
+]
